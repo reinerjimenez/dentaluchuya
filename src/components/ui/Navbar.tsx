@@ -45,7 +45,15 @@ const Navbar = () => {
           <Link href="/" className="flex items-center gap-3 group">
             {/* Custom PNG Logo */}
             <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
-              <Image src="/logouchuya.webp" alt="Uchuya Dental Premium" width={48} height={48} className="object-contain" priority sizes="48px" />
+              <Image
+                src="/logouchuya.webp"
+                alt="Uchuya Dental Premium"
+                width={200}
+                height={202}
+                className="h-12 w-auto object-contain"
+                priority
+                sizes="48px"
+              />
             </div>
             <div className="flex flex-col">
               <span

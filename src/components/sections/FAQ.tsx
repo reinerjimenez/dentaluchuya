@@ -131,7 +131,7 @@ const FAQ = () => {
 
           {/* Right column - Accordion */}
           <div className="space-y-4">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {filtered.map((faq, index) => (
                 <m.div
                   key={faq.question}

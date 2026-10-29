@@ -19,7 +19,7 @@ const GALLERY_ITEMS = [
     size: "col-span-1 row-span-1",
   },
   {
-    src: "/blanqueamiento.webp",
+    src: "/blanqueamient.webp",
     alt: "Resultado de blanqueamiento dental en paciente atendida en Tingo María – sonrisa perfecta",
     label: "Blanqueamiento",
     size: "col-span-1 row-span-1",
@@ -50,7 +50,7 @@ const GALLERY_ITEMS = [
     size: "col-span-1 row-span-1",
   },
   {
-    src: "/tec3d.webp",
+    src: "/clientesfelices.webp",
     alt: "Pacientes felices con sus sonrisas en la Clínica Dental Uchuya Premium de Mailyng, Tingo María",
     label: "Pacientes felices",
     size: "col-span-2 row-span-1",
