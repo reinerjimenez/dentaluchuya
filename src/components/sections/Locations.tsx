@@ -36,7 +36,7 @@ const SEDES = [
     hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
     mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.068!2d-76.0832!3d-8.9231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7e1a000000001%3A0x1!2sAv.%20Lima%20455%2C%20Aucayacu!5e0!3m2!1ses!2spe!4v1714600000001",
     mapsDirections: "https://maps.google.com/?q=Av.+Lima+455,+Aucayacu,+Peru",
-    color: "from-gold to-gold-dark",
+    color: "from-gold-dark to-gold",
   },
 ];
 

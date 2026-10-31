@@ -5,35 +5,35 @@ import type { MetadataRoute } from "next";
 const SITE_URL =
   process.env.SITE_URL ?? "https://dentaluchuya.vercel.app";
 
-// INDEXING_ENABLED: establecer en "true" en Vercel únicamente cuando el dominio
-// personalizado esté configurado y activo. Por defecto NO se indexa.
-const indexingEnabled = process.env.INDEXING_ENABLED === "true";
+// La indexación NUNCA debe habilitarse en ningún subdominio de Vercel (*.vercel.app).
+// Solo se permite cuando se configure un dominio personalizado definitivo en SITE_URL
+// Y se active explícitamente INDEXING_ENABLED === "true".
+const isVercelDomain = SITE_URL.includes("vercel.app");
+const indexingEnabled = process.env.INDEXING_ENABLED === "true" && !isVercelDomain;
 
 export default function robots(): MetadataRoute.Robots {
   if (!indexingEnabled) {
-    // Entorno de pruebas: permitir que los rastreadores lean el HTML
-    // (necesario para que puedan leer la directiva noindex del <head>),
-    // pero bloquear la indexación de contenido.
+    // Entorno de pruebas: permitir que los rastreadores accedan al HTML para leer
+    // la directiva noindex del <head>, sin bloquear recursos necesarios como CSS/JS en /_next/.
     return {
       rules: [
         {
           userAgent: "*",
-          // Permitimos el acceso al HTML para que los bots lean el noindex.
-          // Bloqueamos solo rutas internas de Next.js que no aportan contenido.
-          disallow: ["/api/", "/_next/"],
+          allow: "/",
+          disallow: ["/api/"],
         },
       ],
-      // Sin sitemap en entorno de pruebas para no inducir a los bots a indexar.
+      // Sin sitemap en entorno de pruebas ni en dominio vercel.app
     };
   }
 
-  // Producción con dominio personalizado activo:
+  // Producción con dominio personalizado definitivo activo:
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/"],
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

@@ -32,9 +32,11 @@ const outfit = Outfit({
 const BASE_URL =
   process.env.SITE_URL ?? "https://dentaluchuya.vercel.app";
 
-// INDEXING_ENABLED: establecer en "true" en Vercel solo cuando el dominio
-// personalizado esté activo y se quiera habilitar la indexación.
-const indexingEnabled = process.env.INDEXING_ENABLED === "true";
+// La indexación NUNCA debe habilitarse en ningún subdominio de Vercel (*.vercel.app).
+// Solo se permite cuando se configure un dominio personalizado definitivo en SITE_URL
+// Y se active explícitamente INDEXING_ENABLED === "true".
+const isVercelDomain = BASE_URL.includes("vercel.app");
+const indexingEnabled = process.env.INDEXING_ENABLED === "true" && !isVercelDomain;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -134,6 +136,10 @@ export const metadata: Metadata = {
     : {
         index: false,
         follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
       },
 
   alternates: {
