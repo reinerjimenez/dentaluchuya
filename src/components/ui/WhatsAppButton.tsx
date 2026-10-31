@@ -7,12 +7,20 @@ import { cn } from "@/lib/utils";
 
 const SEDES = [
   {
-    id: "tingomaria",
-    name: "Tingo María",
+    id: "tingomaria-alameda",
+    name: "Tingo María – Alameda Perú",
     badge: "Principal",
-    number: "51966746478",
+    number: "51900755788",
     address: "Av. Alameda Perú 425",
-    hours: "Lun–Sáb 9am–8pm",
+    hours: "Lun–Sáb 9am–1pm / 3:30–8pm",
+  },
+  {
+    id: "tingomaria-prato",
+    name: "Tingo María – José Prato",
+    badge: "",
+    number: "51966746478",
+    address: "Jr. José Prato 277",
+    hours: "Lun–Sáb 9am–1pm / 3:30–8pm",
   },
   {
     id: "aucayacu",
@@ -20,7 +28,7 @@ const SEDES = [
     badge: "",
     number: "51935817120",
     address: "Av. Lima 455",
-    hours: "Lun–Sáb 9am–7pm",
+    hours: "Lun–Sáb 9am–1pm / 3:30–8pm",
   },
 ];
 

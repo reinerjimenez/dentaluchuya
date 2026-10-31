@@ -2,19 +2,30 @@
 
 import { useState } from "react";
 import { MapPin, Phone, Clock, ExternalLink, MessageCircle } from "lucide-react";
-import { m, AnimatePresence } from "framer-motion";
+import { m } from "framer-motion";
 
 const SEDES = [
   {
-    name: "Tingo María",
+    name: "Tingo María – Alameda Perú",
     badge: "Sede Principal",
     address: "Av. Alameda Perú 425, Tingo María 10131, Perú",
-    phone: "+51 966 746 478",
-    whatsapp: "51966746478",
-    hours: "Lun – Sáb: 9:00 AM – 8:00 PM",
+    phone: "+51 900 755 788",
+    whatsapp: "51900755788",
+    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
     mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.068!2d-76.0026!3d-9.2974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7f9e3c0000001%3A0x1!2sAv.%20Alameda%20Per%C3%BA%20425%2C%20Tingo%20Mar%C3%ADa!5e0!3m2!1ses!2spe!4v1714600000000",
     mapsDirections: "https://maps.google.com/?q=Av.+Alameda+Perú+425,+Tingo+María,+Peru",
     color: "from-gold to-gold-dark",
+  },
+  {
+    name: "Tingo María – José Prato",
+    badge: "Segunda Sede",
+    address: "Jr. José Prato 277, Tingo María 10131, Perú",
+    phone: "+51 966 746 478",
+    whatsapp: "51966746478",
+    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
+    mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.068!2d-76.0026!3d-9.2974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7f9e3c0000001%3A0x1!2sJr.%20Jos%C3%A9%20Prato%20277%2C%20Tingo%20Mar%C3%ADa!5e0!3m2!1ses!2spe!4v1714600000002",
+    mapsDirections: "https://maps.app.goo.gl/y9R2KgK39a5VhmTR8?g_st=ic",
+    color: "from-gold-dark to-gold",
   },
   {
     name: "Aucayacu",
@@ -22,10 +33,10 @@ const SEDES = [
     address: "Av. Lima 455, Aucayacu, Peru, 10171",
     phone: "+51 935 817 120",
     whatsapp: "51935817120",
-    hours: "Lun – Sáb: 9:00 AM – 7:00 PM",
+    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
     mapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3941.068!2d-76.0832!3d-8.9231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7e1a000000001%3A0x1!2sAv.%20Lima%20455%2C%20Aucayacu!5e0!3m2!1ses!2spe!4v1714600000001",
     mapsDirections: "https://maps.google.com/?q=Av.+Lima+455,+Aucayacu,+Peru",
-    color: "from-gold-dark to-gold",
+    color: "from-gold to-gold-dark",
   },
 ];
 
@@ -60,7 +71,7 @@ const Locations = () => {
             viewport={{ once: true }}
             className="text-gray-500 mt-4 text-lg max-w-xl mx-auto"
           >
-            Dos sedes para que tu atención dental premium esté siempre a mano, donde estés.
+            Tres sedes para que tu atención dental premium esté siempre a mano, donde estés.
           </m.p>
         </div>
 
@@ -83,9 +94,9 @@ const Locations = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-10">
           {SEDES.map((sede, index) => (
-            <div 
+            <div
               key={`wrapper-${sede.name}`}
               className={index !== activeTab ? "hidden md:block" : "block"}
             >

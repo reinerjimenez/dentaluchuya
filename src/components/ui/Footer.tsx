@@ -52,17 +52,24 @@ const NAV_LINKS = [
 
 const SEDES = [
   {
-    name: "Tingo María (Principal)",
+    name: "Tingo María – Alameda Perú",
     address: "Av. Alameda Perú 425, Tingo María 10131",
-    phone: "+51 900755788",
-    hours: "Lun – Sáb: 9:00 AM – 8:00 PM",
+    phone: "+51 900 755 788",
+    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
+    whatsapp: "51900755788",
+  },
+  {
+    name: "Tingo María – José Prato",
+    address: "Jr. José Prato 277, Tingo María 10131",
+    phone: "+51 966 746 478",
+    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
     whatsapp: "51966746478",
   },
   {
     name: "Sede Aucayacu",
     address: "Av. Lima 455, Aucayacu 10171",
     phone: "+51 935 817 120",
-    hours: "Lun – Sáb: 9:00 AM – 8:00 PM",
+    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
     whatsapp: "51935817120",
   },
 ];

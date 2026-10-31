@@ -27,7 +27,14 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const BASE_URL = "https://clinicadentaluchuya.com";
+// ENTORNO: mientras el dominio personalizado no esté operativo, se usa la URL de Vercel.
+// Cuando el dominio esté listo, establece SITE_URL="https://dentaluchuya.com" en Vercel.
+const BASE_URL =
+  process.env.SITE_URL ?? "https://dentaluchuya.vercel.app";
+
+// INDEXING_ENABLED: establecer en "true" en Vercel solo cuando el dominio
+// personalizado esté activo y se quiera habilitar la indexación.
+const indexingEnabled = process.env.INDEXING_ENABLED === "true";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -38,7 +45,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Clínica Dental Uchuya Premium de Mailyng: líderes en diseño de sonrisa, implantes dentales, ortodoncia con brackets e Invisalign, blanqueamiento y odontopediatría en Tingo María y Aucayacu, Perú. Llama al +51 966 746 478.",
+    "Clínica Dental Uchuya Premium de Mailyng: líderes en diseño de sonrisa, implantes dentales, ortodoncia con brackets e Invisalign, blanqueamiento y odontopediatría en Tingo María y Aucayacu, Perú.",
 
   keywords: [
     // Marca
@@ -109,19 +116,29 @@ export const metadata: Metadata = {
     images: ["/hero.webp"],
   },
 
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  // Noindex mientras se opera bajo dominio de prueba.
+  // Cambiar a index:true solo cuando INDEXING_ENABLED=true esté configurado
+  // y el dominio personalizado esté activo.
+  robots: indexingEnabled
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+      },
 
   alternates: {
+    // Canonical apunta a la URL real del entorno activo.
+    // En producción con dominio propio, SITE_URL lo sobreescribirá automáticamente.
     canonical: BASE_URL,
   },
 
@@ -146,16 +163,16 @@ const localBusinessSchema = {
   name: "Clínica Dental Uchuya Premium de Mailyng",
   alternateName: "Dental Uchuya",
   description:
-    "Clínica dental de alta especialidad con dos sedes en la Selva Central del Perú. Ofrecemos diseño de sonrisa, implantes dentales, ortodoncia, blanqueamiento, odontopediatría y rehabilitación oral.",
+    "Clínica dental de alta especialidad con tres sedes en la Selva Central del Perú. Ofrecemos diseño de sonrisa, implantes dentales, ortodoncia, blanqueamiento, odontopediatría y rehabilitación oral.",
   url: BASE_URL,
   logo: `${BASE_URL}/logouchuya.webp`,
   image: `${BASE_URL}/hero.webp`,
-  telephone: ["+51966746478", "+51935817120"],
+  telephone: ["+51900755788", "+51966746478", "+51935817120"],
   email: "admidentaluchuya@gmail.com",
   priceRange: "$$",
   currenciesAccepted: "PEN",
   paymentAccepted: "Cash, Credit Card, Debit Card",
-  hasMap: "https://maps.google.com/?q=Av.+Alameda+Perú+425,+Tingo+María,+Peru",
+  hasMap: "https://maps.app.goo.gl/y9R2KgK39a5VhmTR8?g_st=ic",
   sameAs: [
     "https://www.facebook.com/share/1Cf85rz4B8/?mibextid=wwXIfr",
     "https://www.instagram.com/clinicadentaluchuya_premium",
@@ -165,6 +182,14 @@ const localBusinessSchema = {
     {
       "@type": "PostalAddress",
       streetAddress: "Av. Alameda Perú 425",
+      addressLocality: "Tingo María",
+      addressRegion: "Huánuco",
+      postalCode: "10131",
+      addressCountry: "PE",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Jr. José Prato 277",
       addressLocality: "Tingo María",
       addressRegion: "Huánuco",
       postalCode: "10131",
@@ -189,16 +214,17 @@ const localBusinessSchema = {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       opens: "09:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "15:30",
       closes: "20:00",
     },
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "500",
-    bestRating: "5",
-    worstRating: "1",
-  },
+  // aggregateRating eliminado: no es verificable y puede generar penalización
+  // de Google si no proviene de datos estructurados en reseñas reales.
   medicalSpecialty: [
     "Dentistry",
     "Orthodontics",
