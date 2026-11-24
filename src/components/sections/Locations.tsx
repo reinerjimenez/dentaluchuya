@@ -12,11 +12,11 @@ export default function Locations() {
     <section id="sedes" className="scroll-mt-24 bg-gray-50 py-12 md:py-24" aria-labelledby="titulo-sedes">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="mb-8 text-center md:mb-12">
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold-ink">Nuestras ubicaciones</p>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold">Nuestras ubicaciones</p>
           <h2 id="titulo-sedes" className="mt-4 font-heading text-3xl font-bold md:text-5xl">
-            Sedes en <span className="text-gold-ink">Tingo María y Aucayacu</span>
+            Sedes en <span className="text-gold-dark">Tingo María y Aucayacu</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
+          <p className="mx-auto mt-4 max-w-xl text-lg text-gray-500">
             Tres consultorios para agendar tu atención dental en Huánuco.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -24,7 +24,7 @@ export default function Locations() {
               <Link
                 key={city.path}
                 href={city.path}
-                className="inline-flex min-h-11 items-center rounded-full border border-gray-300 bg-white px-4 text-sm font-bold text-gray-800 hover:border-gold-ink hover:text-gold-ink"
+                className="inline-flex min-h-11 items-center rounded-full border border-gray-300 bg-white px-4 text-sm font-bold text-gray-800 hover:border-gold hover:text-gold"
               >
                 Sedes en {city.name}
               </Link>
@@ -35,7 +35,7 @@ export default function Locations() {
         <div
           role="group"
           aria-label="Filtrar consultorios"
-          className="mb-6 grid grid-cols-2 gap-2 rounded-2xl border border-gray-200 bg-white p-2 shadow-sm md:hidden"
+          className="mb-6 grid grid-cols-2 gap-2 rounded-2xl border border-gray-100 bg-white p-2 shadow-sm md:hidden"
         >
           {[{ id: null, shortName: "Todas" }, ...locations].map(({ id, shortName }) => (
             <button
@@ -45,7 +45,7 @@ export default function Locations() {
               aria-controls="consultorios"
               onClick={() => setActiveLocation(id)}
               className={`min-h-11 rounded-xl px-2 text-sm font-bold transition-colors ${
-                activeLocation === id ? "bg-gold text-gray-950" : "text-gray-700 hover:bg-gray-100"
+                activeLocation === id ? "bg-gold text-white shadow-md" : "text-gray-600 hover:bg-gray-50 hover:text-black"
               }`}
             >
               {shortName}

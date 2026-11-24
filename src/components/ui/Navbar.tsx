@@ -77,7 +77,7 @@ const Navbar = () => {
               >
                 UCHUYA
               </span>
-              <span className={cn("text-[10px] font-semibold tracking-[0.25em] uppercase", solid ? "text-gold-ink" : "text-gold-light")}>
+              <span className="text-[10px] font-semibold tracking-[0.25em] text-gold-dark uppercase">
                 Dental Premium
               </span>
             </div>
@@ -90,7 +90,7 @@ const Navbar = () => {
                 href={link.href}
                 className={cn(
                   "inline-flex min-h-11 items-center text-sm font-semibold transition-colors relative group",
-                  solid ? "text-gray-700 hover:text-gold-ink" : "text-white hover:text-gold-light"
+                  solid ? "text-gray-700 hover:text-gold-dark" : "text-white/90 hover:text-gold-dark"
                 )}
               >
                 {link.name}
@@ -104,15 +104,15 @@ const Navbar = () => {
               href={telephone}
               className={cn(
                 "flex min-h-11 items-center gap-2 text-sm font-semibold transition-colors",
-                solid ? "text-gray-700" : "text-white"
+                solid ? "text-gray-600" : "text-white/80"
               )}
             >
-              <Phone size={16} className={solid ? "text-gold-ink" : "text-gold-light"} />
+              <Phone size={16} className="text-gold" />
               {contactLocation.phone.replace(/^\+51\s/, "")}
             </a>
             <Link
               href={bookingLink}
-              className="inline-flex min-h-11 items-center bg-gold-gradient text-gray-950 px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform premium-shadow"
+              className="inline-flex min-h-11 items-center bg-gold-gradient text-white px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform premium-shadow"
             >
               Agendar cita
             </Link>
@@ -173,7 +173,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={closeMenu}
-                className="inline-flex min-h-11 items-center text-3xl font-heading font-bold text-gray-900 hover:text-gold-ink transition-colors"
+                className="inline-flex min-h-11 items-center text-3xl font-heading font-bold text-gray-900 hover:text-gold transition-colors"
               >
                 {link.name}
               </Link>
@@ -184,12 +184,12 @@ const Navbar = () => {
             <Link
               href={bookingLink}
               onClick={closeMenu}
-              className="block w-full bg-gold-gradient text-gray-950 px-8 py-4 rounded-full font-bold text-lg text-center"
+              className="block w-full bg-gold-gradient text-white px-8 py-4 rounded-full font-bold text-lg text-center"
             >
               Agendar cita
             </Link>
-            <a href={telephone} className="flex min-h-11 items-center justify-center gap-2 text-gray-700 font-semibold">
-              <Phone size={18} className="text-gold-ink" />
+            <a href={telephone} className="flex min-h-11 items-center justify-center gap-2 text-gray-600 font-semibold">
+              <Phone size={18} className="text-gold" />
               {contactLocation.phone}
             </a>
           </div>

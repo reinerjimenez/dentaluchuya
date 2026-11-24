@@ -48,20 +48,20 @@ const AudioPlayer = () => {
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 sm:flex-row sm:gap-6">
           <div className="flex shrink-0 items-center gap-3">
             <div className="premium-shadow flex size-12 shrink-0 items-center justify-center rounded-full bg-gold-gradient">
-              <Headphones size={22} className="text-gray-950" />
+              <Headphones size={22} className="text-white" />
             </div>
             <div>
               <p className="font-heading text-sm font-bold leading-tight text-gray-900">
                 Conócenos en 2 minutos
               </p>
-              <p className="mt-0.5 text-xs leading-tight text-gray-600">
+              <p className="mt-0.5 text-xs leading-tight text-gray-500">
                 Presentación oficial de la clínica
               </p>
             </div>
           </div>
 
           <div className="flex w-full flex-1 items-center gap-3">
-            <span aria-hidden="true" className="w-9 shrink-0 text-right font-mono text-xs tabular-nums text-gray-600">
+            <span aria-hidden="true" className="w-9 shrink-0 text-right font-mono text-xs tabular-nums text-gray-400">
               {formatTime(elapsed)}
             </span>
             <input
@@ -80,9 +80,9 @@ const AudioPlayer = () => {
                 audio.currentTime = seconds;
                 setElapsed(seconds);
               }}
-              className="min-h-11 min-w-0 flex-1 cursor-pointer accent-gold-ink disabled:cursor-default"
+              className="min-h-11 min-w-0 flex-1 cursor-pointer accent-gold disabled:cursor-default"
             />
-            <span aria-hidden="true" className="w-9 shrink-0 font-mono text-xs tabular-nums text-gray-600">
+            <span aria-hidden="true" className="w-9 shrink-0 font-mono text-xs tabular-nums text-gray-400">
               {formatTime(duration)}
             </span>
           </div>
@@ -91,7 +91,7 @@ const AudioPlayer = () => {
             type="button"
             onClick={togglePlayback}
             aria-label={isPlaying ? "Pausar audio" : "Escuchar presentación de la clínica"}
-            className="premium-shadow flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gold-gradient px-5 py-2.5 text-sm font-bold text-gray-950 transition-transform hover:scale-105 active:scale-95"
+            className="premium-shadow flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gold-gradient px-5 py-2.5 text-sm font-bold text-white transition-transform hover:scale-105 active:scale-95"
           >
             {isPlaying ? <><Pause size={16} /> Pausar</> : <><Play size={16} /> Escuchar</>}
           </button>
@@ -107,7 +107,7 @@ const AudioPlayer = () => {
         )}
         <noscript>
           <p className="mt-3 text-center">
-            <a href={audioSource} className="inline-flex min-h-11 items-center font-semibold text-gold-ink underline">
+            <a href={audioSource} className="inline-flex min-h-11 items-center font-semibold text-gold underline">
               Abrir la presentación en audio
             </a>
           </p>

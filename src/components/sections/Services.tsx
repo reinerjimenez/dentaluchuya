@@ -45,7 +45,7 @@ const Services = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-20">
           <span
-            className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm"
+            className="text-gold font-bold tracking-[0.2em] uppercase text-sm"
           >
             Nuestras Especialidades
           </span>
@@ -53,7 +53,7 @@ const Services = () => {
             className="text-4xl md:text-5xl font-heading font-bold mt-4 mb-6"
           >
             Tratamientos Dentales en{" "}
-            <span className="text-gold-ink">Tingo María y Aucayacu</span>
+            <span className="text-gold-dark">Tingo María y Aucayacu</span>
           </h2>
           <p
             className="text-gray-500 text-lg leading-relaxed"
@@ -72,7 +72,7 @@ const Services = () => {
               className="bg-white p-6 md:p-10 rounded-3xl premium-shadow hover:translate-y-[-10px] transition-transform duration-300 group border border-gray-100"
             >
               <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-gradient transition-colors">
-                <service.icon className="text-gold-ink group-hover:text-neutral-950 transition-colors" size={32} />
+                <service.icon className="text-gold group-hover:text-white transition-colors" size={32} />
               </div>
               <h3 className="text-2xl font-heading font-bold mb-4">{service.title}</h3>
               <p className="text-gray-500 leading-relaxed">

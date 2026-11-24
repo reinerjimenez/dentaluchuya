@@ -104,7 +104,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-11 h-11 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:bg-gold hover:border-gold hover:text-gray-950 transition-colors duration-300"
+                  className="w-11 h-11 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-gold hover:border-gold hover:text-white transition-colors duration-300"
                 >
                   {s.icon}
                 </a>
@@ -122,7 +122,7 @@ const Footer = () => {
                 <li key={l.name}>
                   <Link
                     href={l.href}
-                    className="group inline-flex min-h-11 items-center gap-2 text-sm text-gray-300 transition-colors hover:text-gold"
+                    className="group inline-flex min-h-11 items-center gap-2 text-sm text-gray-400 transition-colors hover:text-gold"
                   >
                     <span className="w-0 h-px bg-gold transition-[width] duration-300 group-hover:w-3" />
                     {l.name}
@@ -140,7 +140,7 @@ const Footer = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {locations.map((sede) => (
                 <div key={sede.id}>
-                  <h3 className="font-bold text-gold text-sm">
+                  <h3 className="font-bold text-gold-dark text-sm">
                     <Link href={sede.path} className="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-gold-light">
                       {sede.name}
                     </Link>
@@ -182,7 +182,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-10 border-t border-gray-800/60 text-gray-400 text-xs">
+        <div className="pt-10 border-t border-gray-800/60 text-gray-500 text-xs">
           <p>© {new Date().getFullYear()} {siteName}. Desarrollado por <a href="https://www.linkedin.com/in/reiner-jairo-jim%C3%A9nez-huaman-9234a9388/" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">Reiner Jimenez</a>. Todos los derechos reservados.</p>
         </div>
       </div>

@@ -67,13 +67,13 @@ const FAQ = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Filtro y contacto */}
           <div className="lg:sticky lg:top-28">
-            <span className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm">
+            <span className="text-gold font-bold tracking-[0.2em] uppercase text-sm">
               Preguntas Frecuentes
             </span>
             <h2 className="text-4xl md:text-5xl font-heading font-bold mt-4 mb-8">
-              Resolvemos tus <span className="text-gold-ink">Dudas</span>
+              Resolvemos tus <span className="text-gold-dark">Dudas</span>
             </h2>
-            <p className="text-gray-600 mb-10 leading-relaxed text-lg">
+            <p className="text-gray-500 mb-10 leading-relaxed text-lg">
               Queremos que te sientas seguro y bien informado antes de iniciar
               tu camino hacia una sonrisa perfecta.
             </p>
@@ -89,7 +89,7 @@ const FAQ = () => {
                   className={cn(
                     "min-h-11 px-5 py-2 rounded-full text-sm font-bold transition",
                     activeCategory === cat
-                      ? "bg-gold-gradient text-gray-950 premium-shadow"
+                      ? "bg-gold-gradient text-white premium-shadow"
                       : "bg-white border border-gray-200 text-gray-600 hover:border-gold"
                   )}
                 >
@@ -99,7 +99,7 @@ const FAQ = () => {
             </div>
 
             {/* Contacto */}
-            <div className="bg-gold-gradient p-6 sm:p-8 rounded-3xl text-gray-950 premium-shadow">
+            <div className="bg-gold-gradient p-6 sm:p-8 rounded-3xl text-white premium-shadow">
               <HelpCircle size={48} className="mb-6 opacity-50" />
               <h3 className="text-2xl font-bold mb-4">
                 ¿No encuentras lo que buscas?
@@ -112,7 +112,7 @@ const FAQ = () => {
                 href={whatsappUrl(contactLocation, "Hola, tengo una pregunta sobre los tratamientos")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 bg-white text-gold-ink font-bold px-5 sm:px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                className="inline-flex min-h-11 items-center gap-2 bg-white text-gold font-bold px-5 sm:px-8 py-3 rounded-full hover:scale-105 transition-transform"
               >
                 <MessageCircle size={18} />
                 Consultar por WhatsApp
@@ -131,14 +131,14 @@ const FAQ = () => {
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-2xl p-6 text-left hover:bg-gray-50 [&::-webkit-details-marker]:hidden">
                   <span>
-                    <span className="mb-2 inline-block rounded-full bg-gold/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-gold-ink">
+                    <span className="mb-2 inline-block rounded-full bg-gold/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wide text-gold-dark">
                       {faq.category}
                     </span>
                     <span className="block font-bold text-gray-900">{faq.question}</span>
                   </span>
-                  <ChevronDown aria-hidden="true" className="shrink-0 text-gold-ink transition-transform group-open:rotate-180" />
+                  <ChevronDown aria-hidden="true" className="shrink-0 text-gold transition-transform group-open:rotate-180" />
                 </summary>
-                <p className="border-t border-gray-100 px-6 pb-6 pt-4 leading-relaxed text-gray-700">
+                <p className="border-t border-gray-50 px-6 pb-6 pt-4 leading-relaxed text-gray-500">
                   {faq.answer}
                 </p>
               </details>

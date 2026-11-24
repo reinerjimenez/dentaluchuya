@@ -67,14 +67,14 @@ const Gallery = () => {
         {/* Encabezado */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-4 md:gap-6">
           <div className="max-w-2xl">
-            <span className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm">
+            <span className="text-gold font-bold tracking-[0.2em] uppercase text-sm">
               Galería
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-bold mt-4">
-              Nuestros <span className="text-gold-ink">Resultados</span> &amp; Clínica
+              Nuestros <span className="text-gold-dark">Resultados</span> &amp; Clínica
             </h2>
           </div>
-          <p className="text-gray-600 max-w-sm text-lg leading-relaxed">
+          <p className="text-gray-500 max-w-sm text-lg leading-relaxed">
             La excelencia se refleja en cada detalle. Conoce nuestras instalaciones y resultados reales.
           </p>
         </div>
@@ -115,7 +115,7 @@ const Gallery = () => {
 
         {/* Más resultados en Facebook */}
         <div className="text-center mt-16">
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-500 mb-6">
             ¿Quieres ver más resultados? Visita nuestra página de Facebook.
           </p>
           <div className="flex gap-4 justify-center items-center flex-wrap">
@@ -152,7 +152,7 @@ const Gallery = () => {
             type="button"
             onClick={() => dialogRef.current?.close()}
             aria-label="Cerrar imagen ampliada"
-            className="absolute top-0 right-0 z-10 grid min-h-11 min-w-11 place-items-center rounded-full bg-black/90 text-white"
+            className="absolute top-0 right-0 z-10 grid min-h-11 min-w-11 place-items-center rounded-full bg-white/10 text-white/70 hover:text-white"
           >
             <X size={28} />
           </button>

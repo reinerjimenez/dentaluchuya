@@ -11,7 +11,7 @@ export default function LocationMap({ id, name, address }: { id: string; name: s
     <div className="mb-4">
       <button
         type="button"
-        className="inline-flex min-h-11 items-center gap-2 rounded-xl px-2 text-left text-sm font-bold text-gold-ink hover:underline"
+        className="inline-flex min-h-11 items-center gap-2 rounded-xl px-2 text-left text-sm font-bold text-gold hover:underline"
         aria-expanded={isOpen}
         aria-controls={mapId}
         aria-label={`${isOpen ? "Ocultar" : "Ver"} mapa de ${name}`}

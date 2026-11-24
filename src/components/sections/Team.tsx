@@ -48,7 +48,7 @@ const Team = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span
-            className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm"
+            className="text-gold font-bold tracking-[0.2em] uppercase text-sm"
           >
             Nuestros Especialistas
           </span>
@@ -56,7 +56,7 @@ const Team = () => {
             className="text-3xl md:text-5xl font-heading font-bold mt-4 mb-6"
           >
             Nuestros Dentistas en{" "}
-            <span className="text-gold-ink">Tingo María y Aucayacu</span>
+            <span className="text-gold-dark">Tingo María y Aucayacu</span>
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
             Especialistas certificados con vocación de servicio, comprometidos con
@@ -96,7 +96,7 @@ const Team = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Ver Instagram de la cl?nica`}
-                  className="absolute top-4 right-4 h-11 w-11 bg-neutral-950/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-gold hover:border-gold hover:text-neutral-950 transition-colors duration-300"
+                  className="absolute top-4 right-4 h-11 w-11 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-gold hover:border-gold transition-colors duration-300"
                 >
                   <InstagramIcon />
                 </a>
@@ -105,7 +105,7 @@ const Team = () => {
               {/* Text Content */}
               <div>
                 <h3 className="text-2xl font-heading font-bold mb-1">{member.name}</h3>
-                <p className="text-gold-ink font-semibold text-sm mb-4">{member.role}</p>
+                <p className="text-gold-dark font-semibold text-sm mb-4">{member.role}</p>
                 <p className="text-gray-500 leading-relaxed text-sm mb-6">{member.bio}</p>
 
                 {/* Awards */}

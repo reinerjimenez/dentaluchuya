@@ -6,7 +6,6 @@
   --color-gold-light:   #f3e5ab;
   --color-gold:         #d4af37;
   --color-gold-dark:    #b8860b;
-  --color-gold-ink:     #79540a;
   --color-gold-premium: #c5a059;
 
   /* Base */
@@ -74,11 +73,11 @@
     color: var(--foreground);
   }
 
-  /* Anillo de enfoque visible sobre fondos claros y oscuros. */
+  /* Anillo de enfoque dorado. */
   :focus-visible {
-    outline: 2px solid #1c1917;
+    outline: 2px solid #d4af37;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px white;
+    border-radius: 4px;
   }
 
   :where(main, section, article, main div)[id] {

@@ -50,7 +50,7 @@ export default function CityPage({ slug }: { slug: CitySlug }) {
             <span aria-hidden="true">/</span>
             <span aria-current="page">{city.name}</span>
           </nav>
-          <p className="font-bold text-gold-ink">{siteName}</p>
+          <p className="font-bold text-gold-dark">{siteName}</p>
           <h1 id="titulo-ciudad" className="mt-3 font-heading text-4xl font-bold text-gray-950 md:text-6xl">
             Clínica dental en {city.name}
           </h1>
@@ -67,11 +67,11 @@ export default function CityPage({ slug }: { slug: CitySlug }) {
             {branches.map((location) => <LocationCard key={location.id} location={location} />)}
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href="/#servicios" className="inline-flex min-h-11 items-center rounded-full bg-gold-gradient px-4 py-2 font-bold text-gray-950">
+            <Link href="/#servicios" className="inline-flex min-h-11 items-center rounded-full bg-gold-gradient px-4 py-2 font-bold text-white">
               Ver tratamientos dentales
             </Link>
             {otherCity && (
-              <Link href={otherCity.path} className="inline-flex min-h-11 items-center rounded-full border border-gray-300 bg-white px-4 py-2 font-bold text-gray-800 hover:border-gold-ink hover:text-gold-ink">
+              <Link href={otherCity.path} className="inline-flex min-h-11 items-center rounded-full border border-gray-300 bg-white px-4 py-2 font-bold text-gray-800 hover:border-gold-dark hover:text-gold-dark">
                 Ver sedes en {otherCity.name}
               </Link>
             )}

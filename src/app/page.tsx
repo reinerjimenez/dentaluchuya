@@ -52,12 +52,12 @@ export default function Home() {
                 key={text}
                 className="group flex cursor-default flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-4"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold-ink transition-colors duration-300 group-hover:bg-gold-gradient group-hover:text-gray-950 md:size-14">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-gold/10 text-gold transition-colors duration-300 group-hover:bg-gold-gradient group-hover:text-white md:size-14">
                   <Icon size={24} aria-hidden="true" />
                 </div>
                 <div>
                   <p className="font-bold text-sm md:text-base text-gray-900">{text}</p>
-                  <p className="text-xs text-gray-600 leading-snug">{sub}</p>
+                  <p className="text-xs text-gray-400 leading-snug">{sub}</p>
                 </div>
               </div>
             ))}
@@ -91,15 +91,15 @@ export default function Home() {
 
               {/* Floating quote badge */}
               <div className="absolute bottom-4 right-3 md:-bottom-6 md:-right-4 lg:-right-10 bg-white p-4 md:p-6 rounded-[28px] md:rounded-[36px] shadow-2xl border border-gray-100 max-w-[180px] md:max-w-[220px]">
-                <p className="text-gold-ink font-bold text-xs md:text-sm mb-1 md:mb-2 italic leading-relaxed">
+                <p className="text-gold font-bold text-xs md:text-sm mb-1 md:mb-2 italic leading-relaxed">
                   &ldquo;Mi compromiso es devolverte la confianza de sonreír&rdquo;
                 </p>
                 <p className="text-gray-900 font-bold text-xs">Dr. Fernando Uchuya</p>
-                <p className="text-gray-600 text-[10px]">Odontólogo Principal</p>
+                <p className="text-gray-400 text-[10px]">Odontólogo Principal</p>
               </div>
 
               {/* Experience badge */}
-              <div className="absolute top-4 left-3 md:-top-6 md:-left-4 lg:-left-8 bg-gold-gradient text-gray-950 p-3 md:p-5 rounded-2xl md:rounded-3xl shadow-xl">
+              <div className="absolute top-4 left-3 md:-top-6 md:-left-4 lg:-left-8 bg-gold-gradient text-white p-3 md:p-5 rounded-2xl md:rounded-3xl shadow-xl">
                 <p className="text-2xl md:text-3xl font-bold leading-none">10+</p>
                 <p className="text-xs font-semibold opacity-80">Años de<br />experiencia</p>
               </div>
@@ -107,11 +107,11 @@ export default function Home() {
 
             {/* Text side */}
             <div className="lg:w-1/2">
-              <span className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm">
+              <span className="text-gold font-bold tracking-[0.2em] uppercase text-sm">
                 Sobre Nosotros
               </span>
               <h2 id="titulo-nosotros" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mt-4 mb-5 md:mb-8 leading-tight">
-                Odontología en <span className="text-gold-ink">Tingo María y Aucayacu</span>
+                Odontología en <span className="text-gold">Tingo María y Aucayacu</span>
               </h2>
               <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed mb-7 md:mb-10">
                 <p>
@@ -138,7 +138,7 @@ export default function Home() {
                   "Garantía total en todos nuestros tratamientos dentales",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-gray-700">
-                    <CheckCircle size={18} className="text-gold-ink shrink-0" aria-hidden="true" />
+                    <CheckCircle size={18} className="text-gold shrink-0" aria-hidden="true" />
                     <span className="font-medium">{item}</span>
                   </li>
                 ))}
@@ -152,8 +152,8 @@ export default function Home() {
                   { value: "10+", label: "Años activos" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <p className="text-2xl md:text-3xl font-bold text-gold-ink mb-1">{stat.value}</p>
-                    <p className="text-xs font-bold uppercase tracking-wider text-gray-600">
+                    <p className="text-2xl md:text-3xl font-bold text-gold mb-1">{stat.value}</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
                       {stat.label}
                     </p>
                   </div>
@@ -162,7 +162,7 @@ export default function Home() {
 
               <Link
                 href="#sedes"
-                className="flex md:inline-flex min-h-11 items-center justify-center gap-2 bg-gold-gradient text-gray-950 px-6 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform premium-shadow"
+                className="flex md:inline-flex min-h-11 items-center justify-center gap-2 bg-gold-gradient text-white px-6 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform premium-shadow"
               >
                 Agenda tu evaluación hoy
               </Link>

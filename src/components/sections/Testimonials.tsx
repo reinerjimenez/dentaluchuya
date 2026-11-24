@@ -74,18 +74,18 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof TESTIMONIALS[num
     </p>
 
     {/* Tag */}
-    <span className="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold-ink text-xs font-bold uppercase tracking-wider mb-6">
+    <span className="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold-dark text-xs font-bold uppercase tracking-wider mb-6">
       {testimonial.service}
     </span>
 
     {/* Author */}
     <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-      <div className="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center text-neutral-950 font-bold text-sm shrink-0">
+      <div className="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center text-white font-bold text-sm shrink-0">
         {testimonial.initial}
       </div>
       <div>
         <p className="font-bold text-gray-900">{testimonial.name}</p>
-        <p className="text-xs text-gray-600">{testimonial.location}</p>
+        <p className="text-xs text-gray-400">{testimonial.location}</p>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@ const Testimonials = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span
-            className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm"
+            className="text-gold font-bold tracking-[0.2em] uppercase text-sm"
           >
             Testimonios Reales
           </span>
@@ -108,7 +108,7 @@ const Testimonials = () => {
             className="text-4xl md:text-5xl font-heading font-bold mt-4 mb-6"
           >
             Pacientes que{" "}
-            <span className="text-gold-ink">Transformaron</span> su Vida
+            <span className="text-gold-dark">Transformaron</span> su Vida
           </h2>
           <p className="text-gray-500 text-lg">
             Más de 10,000 sonrisas felices nos respaldan. Estas son algunas de sus historias.
@@ -125,8 +125,8 @@ const Testimonials = () => {
             { value: "98%", label: "Índice de Satisfacción" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gold-ink">{stat.value}</p>
-              <p className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider mt-1">{stat.label}</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gold-dark">{stat.value}</p>
+              <p className="text-xs md:text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ const Testimonials = () => {
             <button
               type="button"
               onClick={() => setVisibleCount(TESTIMONIALS.length)}
-              className="bg-gold-gradient text-neutral-950 min-h-11 px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform premium-shadow"
+              className="bg-gold-gradient text-white min-h-11 px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform premium-shadow"
             >
               Ver más testimonios
             </button>
