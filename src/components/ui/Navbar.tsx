@@ -1,57 +1,70 @@
-"use client";
+﻿"use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
+import { contactLocation } from "@/lib/locations";
 import { cn } from "@/lib/utils";
-import { m, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { name: "Servicios", href: "#servicios" },
-  { name: "Galería", href: "#galeria" },
-  { name: "Nosotros", href: "#nosotros" },
-  { name: "Equipo", href: "#equipo" },
-  { name: "Sedes", href: "#sedes" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Servicios", href: "/#servicios" },
+  { name: "Galería", href: "/#galeria" },
+  { name: "Nosotros", href: "/#nosotros" },
+  { name: "Equipo", href: "/#equipo" },
+  { name: "Sedes", href: "/#sedes" },
+  { name: "FAQ", href: "/#faq" },
 ];
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDialogElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const homeLinkRef = useRef<HTMLAnchorElement>(null);
+  const solid = pathname !== "/" || isScrolled;
+  const bookingLink = "/#sedes";
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const desktop = window.matchMedia("(min-width: 64rem)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) menuRef.current?.close();
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
   }, []);
 
-
+  const closeMenu = () => menuRef.current?.close();
+  const telephone = `tel:${contactLocation.telephone}`;
 
   return (
     <>
       <nav
+        aria-label="Navegación principal"
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-[padding,background-color,box-shadow,border-color] duration-500 px-6",
-          isScrolled
+          solid
             ? "bg-white/95 backdrop-blur-md shadow-lg py-3 border-b border-gray-100"
             : "bg-transparent py-5"
         )}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            {/* Custom PNG Logo */}
+          <Link href="/" ref={homeLinkRef} aria-label="Clínica Dental Uchuya Premium, inicio" className="flex items-center gap-3 group">
             <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
               <Image
                 src="/logouchuya.webp"
-                alt="Uchuya Dental Premium"
+                alt=""
                 width={200}
                 height={202}
                 className="h-12 w-auto object-contain"
-                priority
                 sizes="48px"
               />
             </div>
@@ -59,131 +72,129 @@ const Navbar = () => {
               <span
                 className={cn(
                   "font-heading font-bold text-xl leading-tight tracking-wider transition-colors",
-                  isScrolled ? "text-gray-900" : "text-white drop-shadow-md"
+                  solid ? "text-gray-900" : "text-white drop-shadow-md"
                 )}
               >
                 UCHUYA
               </span>
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-gold-dark uppercase">
+              <span className={cn("text-[10px] font-semibold tracking-[0.25em] uppercase", solid ? "text-gold-ink" : "text-gold-light")}>
                 Dental Premium
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "text-sm font-semibold hover:text-gold-dark transition-colors relative group",
-                  isScrolled ? "text-gray-700" : "text-white/90"
+                  "inline-flex min-h-11 items-center text-sm font-semibold transition-colors relative group",
+                  solid ? "text-gray-700 hover:text-gold-ink" : "text-white hover:text-gold-light"
                 )}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-[width] duration-300 group-hover:w-full" />
+                <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-gold transition-[width] duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
 
-          {/* Desktop CTA buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+51966746478"
+              href={telephone}
               className={cn(
-                "flex items-center gap-2 text-sm font-semibold transition-colors",
-                isScrolled ? "text-gray-600" : "text-white/80"
+                "flex min-h-11 items-center gap-2 text-sm font-semibold transition-colors",
+                solid ? "text-gray-700" : "text-white"
               )}
             >
-              <Phone size={16} className="text-gold" />
-              966 746 478
+              <Phone size={16} className={solid ? "text-gold-ink" : "text-gold-light"} />
+              {contactLocation.phone.replace(/^\+51\s/, "")}
             </a>
             <Link
-              href="#sedes"
-              className="bg-gold-gradient text-white px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform premium-shadow"
+              href={bookingLink}
+              className="inline-flex min-h-11 items-center bg-gold-gradient text-gray-950 px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform premium-shadow"
             >
-              Agendar Cita
+              Agendar cita
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
           <button
+            ref={menuButtonRef}
             type="button"
             className={cn(
-              "lg:hidden p-2 rounded-xl transition-colors",
-              isScrolled ? "text-gray-900" : "text-white"
+              "lg:hidden min-w-11 min-h-11 p-2 rounded-xl transition-colors",
+              solid ? "text-gray-900" : "text-white"
             )}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Abrir o cerrar menú de navegación"
+            onClick={() => {
+              menuRef.current?.showModal();
+              setMobileMenuOpen(true);
+            }}
+            aria-label="Abrir menú de navegación"
+            aria-haspopup="dialog"
+            aria-controls="menu-movil"
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            <Menu size={28} />
           </button>
+          <noscript>
+            <style>{'button[aria-controls="menu-movil"] { display: none; }'}</style>
+            <a href={bookingLink} className={cn("lg:hidden inline-flex min-h-11 items-center font-semibold", solid ? "text-gray-900" : "text-white")}>
+              Sedes
+            </a>
+          </noscript>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <m.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 bg-white z-40 lg:hidden flex flex-col"
-          >
-            {/* Mobile header */}
-            <div className="flex justify-between items-center px-6 py-5 border-b border-gray-100">
-              <span className="font-heading font-bold text-xl tracking-wider">UCHUYA <span className="text-gold-dark text-sm">DENTAL</span></span>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-label="Cerrar menú"
-              >
-                <X size={28} />
-              </button>
-            </div>
+      <dialog
+        ref={menuRef}
+        id="menu-movil"
+        aria-labelledby="menu-movil-titulo"
+        onClose={() => {
+          setMobileMenuOpen(false);
+          if (window.matchMedia("(min-width: 64rem)").matches) {
+            homeLinkRef.current?.focus({ preventScroll: true });
+          } else {
+            menuButtonRef.current?.focus({ preventScroll: true });
+          }
+        }}
+        className="fixed inset-0 w-full h-dvh max-h-none max-w-none bg-white text-gray-900 overflow-y-auto"
+      >
+        <div className="flex min-h-full flex-col">
+          <div className="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+            <h2 id="menu-movil-titulo" className="font-heading font-bold text-xl">Menú</h2>
+            <button type="button" onClick={closeMenu} aria-label="Cerrar menú" className="grid min-h-11 min-w-11 place-items-center rounded-xl">
+              <X size={28} />
+            </button>
+          </div>
 
-            {/* Mobile links */}
-            <div className="flex flex-col flex-1 items-start justify-center px-10 gap-8">
-              {navLinks.map((link, i) => (
-                <m.div
-                  key={link.name}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.07 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-3xl font-heading font-bold text-gray-900 hover:text-gold transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </m.div>
-              ))}
-            </div>
-
-            {/* Mobile CTA */}
-            <div className="px-10 pb-12 space-y-4">
+          <nav aria-label="Secciones del sitio" className="flex flex-col flex-1 items-start justify-center px-8 py-6 gap-2 sm:gap-4">
+            {navLinks.map((link) => (
               <Link
-                href="#sedes"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block w-full bg-gold-gradient text-white px-8 py-4 rounded-full font-bold text-lg text-center"
+                key={link.name}
+                href={link.href}
+                onClick={closeMenu}
+                className="inline-flex min-h-11 items-center text-3xl font-heading font-bold text-gray-900 hover:text-gold-ink transition-colors"
               >
-                Agendar Cita
+                {link.name}
               </Link>
-              <a
-                href="tel:+51966746478"
-                className="flex items-center justify-center gap-2 text-gray-600 font-semibold"
-              >
-                <Phone size={18} className="text-gold" />
-                +51 966 746 478
-              </a>
-            </div>
-          </m.div>
-        )}
-      </AnimatePresence>
+            ))}
+          </nav>
+
+          <div className="px-8 pb-8 space-y-3">
+            <Link
+              href={bookingLink}
+              onClick={closeMenu}
+              className="block w-full bg-gold-gradient text-gray-950 px-8 py-4 rounded-full font-bold text-lg text-center"
+            >
+              Agendar cita
+            </Link>
+            <a href={telephone} className="flex min-h-11 items-center justify-center gap-2 text-gray-700 font-semibold">
+              <Phone size={18} className="text-gold-ink" />
+              {contactLocation.phone}
+            </a>
+          </div>
+        </div>
+      </dialog>
     </>
   );
 };

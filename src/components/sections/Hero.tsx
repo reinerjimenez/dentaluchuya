@@ -1,172 +1,65 @@
-"use client";
-
 import Image from "next/image";
-import { m } from "framer-motion";
-import { ChevronRight, Play, Star } from "lucide-react";
 import Link from "next/link";
+import { ChevronRight, Play, Star } from "lucide-react";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section className="relative h-[100svh] min-h-[850px] md:min-h-[700px] flex items-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero.webp"
-          alt="Clínica Dental Uchuya Premium de Mailyng - Instalaciones"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        {/* Multi-layer gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
-      </div>
+    <section className="relative isolate flex min-h-[100svh] items-center bg-neutral-950 py-24 sm:py-28 lg:py-32">
+      <Image
+        src="/hero.webp"
+        alt=""
+        fill
+        fetchPriority="high"
+        loading="eager"
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/75 to-black/45" />
 
-      {/* Animated background particles */}
-      <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <m.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-gold/40"
-            style={{
-              left: `${15 + i * 15}%`,
-              top: `${20 + (i % 3) * 20}%`,
-            }}
-            animate={{ y: [-20, 20, -20], opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
-          />
-        ))}
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6">
         <div className="max-w-3xl">
-          {/* Pre-headline badge */}
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gold/20 backdrop-blur-md border border-gold/40 text-gold-light text-sm font-bold tracking-widest uppercase mb-8">
-              <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-              Odontología Premium · Tingo María &amp; Aucayacu
-            </span>
-          </m.div>
-
-          {/* Main heading */}
-          <m.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] mb-4 md:mb-6"
-          >
-            Tu Sonrisa{" "}
-            <span className="relative">
-              <span className="text-gold-gradient">Perfecta</span>
-            </span>{" "}
-            te espera aquí
-          </m.h1>
-
-          {/* Sub-copy */}
-          <m.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-base md:text-xl text-white/80 mb-8 md:mb-10 leading-relaxed max-w-xl"
-          >
-            El dentista de confianza en Tingo María y Aucayacu. Diseño de sonrisa,
-            implantes, ortodoncia y blanqueamiento con tecnología de vanguardia y{" "}
+          <h1 className="mb-5 text-4xl font-bold leading-[1.1] text-white font-heading md:mb-6 md:text-6xl lg:text-7xl">
+            Clínica dental en{" "}
+            <span className="text-gold-light">Tingo María y Aucayacu</span>
+          </h1>
+          <p className="mb-8 max-w-xl text-base leading-relaxed text-white/90 md:mb-10 md:text-xl">
+            Diseño de sonrisa, implantes, ortodoncia y blanqueamiento con tecnología de vanguardia y{" "}
             <strong className="text-gold-light">atención personalizada desde el primer día</strong>.
-          </m.p>
+          </p>
 
-          {/* CTA Buttons */}
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-16"
-          >
+          <div className="mb-7 flex flex-col gap-4 sm:flex-row md:mb-10">
             <Link
               href="#sedes"
-              className="inline-flex items-center justify-center gap-2 bg-gold-gradient text-white px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform premium-shadow"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-gold-gradient px-8 py-4 text-lg font-bold text-neutral-950 transition-transform hover:scale-105 premium-shadow"
             >
-              Agenda tu cita
-              <ChevronRight size={20} />
+              Agenda tu cita <ChevronRight size={20} aria-hidden="true" />
             </Link>
             <Link
               href="#galeria"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-colors"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-white/20"
             >
-              <Play size={18} className="fill-white" />
-              Ver Resultados
+              <Play size={18} className="fill-white" aria-hidden="true" /> Ver resultados
             </Link>
-          </m.div>
+          </div>
 
-          {/* Trust indicators */}
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6"
-          >
-            {/* Star rating */}
-            <div className="flex items-center gap-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-gold text-gold" />
-                ))}
-              </div>
-              <span className="text-white/80 text-sm font-semibold">4.9/5 · +500 reseñas</span>
-            </div>
-            <div className="hidden sm:block w-px h-4 bg-white/30" />
-            <div className="flex items-center gap-4">
-              <span className="text-white/70 text-sm">✓ Sin lista de espera</span>
-              <div className="w-px h-4 bg-white/30" />
-              <span className="text-white/70 text-sm">✓ Respuesta inmediata</span>
-            </div>
-          </m.div>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/90">
+            <p className="flex items-center gap-2 font-semibold">
+              <Star size={16} className="fill-gold text-gold" aria-hidden="true" />
+              4.9/5 · +500 reseñas
+            </p>
+            <p>✓ Sin lista de espera</p>
+            <p>✓ Respuesta inmediata</p>
+          </div>
+        </div>
+
+        <div className="mt-7 flex w-fit max-w-full items-center gap-4 rounded-2xl border border-white/20 bg-black/50 p-4 text-white lg:ml-auto lg:mt-8">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-gradient text-xl font-bold text-neutral-950">10+</span>
+          <div>
+            <p className="text-sm font-bold">Años de excelencia</p>
+            <p className="text-xs text-white/90">10,000+ pacientes atendidos</p>
+          </div>
         </div>
       </div>
-
-      {/* Floating card — bottom right, hidden on mobile to avoid overlapping WhatsApp button */}
-      <m.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="absolute bottom-10 left-4 md:left-auto md:right-6 lg:right-16 z-10"
-      >
-        <m.div
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="flex items-center gap-4 bg-white/10 backdrop-blur-lg p-5 rounded-2xl border border-white/20 shadow-2xl"
-        >
-          <div className="w-14 h-14 bg-gold-gradient rounded-xl flex items-center justify-center shrink-0 premium-shadow">
-            <span className="text-white font-bold text-xl">10+</span>
-          </div>
-          <div>
-            <p className="text-white font-bold text-sm">Años de Excelencia</p>
-            <p className="text-white/60 text-xs">10,000+ pacientes atendidos</p>
-          </div>
-        </m.div>
-      </m.div>
-
-      {/* Scroll indicator */}
-      <m.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
-      >
-        <span className="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
-        <m.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-5 h-8 border-2 border-white/30 rounded-full flex items-start justify-center p-1"
-        >
-          <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
-        </m.div>
-      </m.div>
     </section>
   );
-};
-
-export default Hero;
+}

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock, Mail } from "lucide-react";
+import { locations, whatsappUrl } from "@/lib/locations";
+import { siteName } from "@/lib/site";
 
 // Social icons — lucide-react doesn't export Facebook/Instagram/TikTok
 const FacebookIcon = () => (
@@ -40,38 +42,13 @@ const SOCIAL_LINKS = [
 ];
 
 const NAV_LINKS = [
-  { name: "Inicio", href: "#" },
-  { name: "Servicios", href: "#servicios" },
-  { name: "Galería", href: "#galeria" },
-  { name: "Nosotros", href: "#nosotros" },
-  { name: "Equipo", href: "#equipo" },
-  { name: "FAQ", href: "#faq" },
-  { name: "Sedes", href: "#sedes" },
-
-];
-
-const SEDES = [
-  {
-    name: "Tingo María – Alameda Perú",
-    address: "Av. Alameda Perú 425, Tingo María 10131",
-    phone: "+51 900 755 788",
-    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
-    whatsapp: "51900755788",
-  },
-  {
-    name: "Tingo María – José Prato",
-    address: "Jr. José Prato 277, Tingo María 10131",
-    phone: "+51 966 746 478",
-    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
-    whatsapp: "51966746478",
-  },
-  {
-    name: "Sede Aucayacu",
-    address: "Av. Lima 455, Aucayacu 10171",
-    phone: "+51 935 817 120",
-    hours: "Lun – Sáb: 9:00 AM – 1:00 PM y 3:30 – 8:00 PM",
-    whatsapp: "51935817120",
-  },
+  { name: "Inicio", href: "/" },
+  { name: "Servicios", href: "/#servicios" },
+  { name: "Galería", href: "/#galeria" },
+  { name: "Nosotros", href: "/#nosotros" },
+  { name: "Equipo", href: "/#equipo" },
+  { name: "Preguntas frecuentes", href: "/#faq" },
+  { name: "Sedes", href: "/#sedes" },
 ];
 
 const Footer = () => {
@@ -90,7 +67,7 @@ const Footer = () => {
               <div className="relative w-12 h-12 flex items-center justify-center shrink-0">
                 <Image
                   src="/logouchuya.webp"
-                  alt="Uchuya Dental Premium"
+                  alt=""
                   width={200}
                   height={202}
                   className="h-12 w-auto object-contain"
@@ -113,7 +90,7 @@ const Footer = () => {
 
             <div className="flex items-center gap-2 text-gray-400 text-sm mb-8">
               <Mail size={16} className="text-gold shrink-0" />
-              <a href="mailto:admidentaluchuya@gmail.com" className="hover:text-gold transition-colors">
+              <a href="mailto:admidentaluchuya@gmail.com" className="inline-flex min-h-11 items-center break-all transition-colors hover:text-gold">
                 admidentaluchuya@gmail.com
               </a>
             </div>
@@ -127,7 +104,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:bg-gold hover:border-gold hover:text-white transition-colors duration-300"
+                  className="w-11 h-11 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:bg-gold hover:border-gold hover:text-gray-950 transition-colors duration-300"
                 >
                   {s.icon}
                 </a>
@@ -137,15 +114,15 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-base font-heading font-bold mb-6 text-white uppercase tracking-wider">
+            <h2 className="text-base font-heading font-bold mb-4 text-white uppercase tracking-wider">
               Navegación
-            </h4>
-            <ul className="space-y-3">
+            </h2>
+            <ul>
               {NAV_LINKS.map((l) => (
                 <li key={l.name}>
                   <Link
                     href={l.href}
-                    className="text-gray-400 hover:text-gold transition-colors text-sm flex items-center gap-2 group"
+                    className="group inline-flex min-h-11 items-center gap-2 text-sm text-gray-300 transition-colors hover:text-gold"
                   >
                     <span className="w-0 h-px bg-gold transition-[width] duration-300 group-hover:w-3" />
                     {l.name}
@@ -157,13 +134,17 @@ const Footer = () => {
 
           {/* Sedes */}
           <div className="lg:col-span-2">
-            <h4 className="text-base font-heading font-bold mb-6 text-white uppercase tracking-wider">
+            <h2 className="text-base font-heading font-bold mb-4 text-white uppercase tracking-wider">
               Nuestras Sedes
-            </h4>
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {SEDES.map((sede) => (
-                <div key={sede.name} className="space-y-3">
-                  <h5 className="font-bold text-gold-dark text-sm">{sede.name}</h5>
+              {locations.map((sede) => (
+                <div key={sede.id}>
+                  <h3 className="font-bold text-gold text-sm">
+                    <Link href={sede.path} className="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-gold-light">
+                      {sede.name}
+                    </Link>
+                  </h3>
                   <div className="space-y-2 text-sm text-gray-400">
                     <p className="flex gap-2">
                       <MapPin size={14} className="text-gold shrink-0 mt-0.5" />
@@ -172,8 +153,8 @@ const Footer = () => {
                     <p className="flex gap-2">
                       <Phone size={14} className="text-gold shrink-0 mt-0.5" />
                       <a
-                        href={`tel:${sede.phone.replace(/\s/g, "")}`}
-                        className="hover:text-gold transition-colors"
+                        href={`tel:${sede.telephone}`}
+                        className="inline-flex min-h-11 items-center hover:text-gold transition-colors"
                       >
                         {sede.phone}
                       </a>
@@ -184,10 +165,10 @@ const Footer = () => {
                     </p>
                   </div>
                   <a
-                    href={`https://wa.me/${sede.whatsapp}?text=Hola,%20deseo%20agendar%20una%20cita`}
+                    href={whatsappUrl(sede, `Hola, deseo agendar una cita en la sede ${sede.name}.`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#25D366] text-xs font-bold hover:underline"
+                    className="inline-flex min-h-11 items-center gap-1.5 text-[#25D366] text-xs font-bold hover:underline"
                   >
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
@@ -201,16 +182,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-10 border-t border-gray-800/60 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-xs">
-          <p>© {new Date().getFullYear()} Clínica Dental Uchuya Premium de Mailyng. Desarrollado por <a href="https://www.linkedin.com/in/reiner-jairo-jim%C3%A9nez-huaman-9234a9388/" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">Reiner Jimenez</a>. Todos los derechos reservados.</p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:text-white transition-colors">
-              Términos y Condiciones
-            </Link>
-            <Link href="#" className="hover:text-white transition-colors">
-              Política de Privacidad
-            </Link>
-          </div>
+        <div className="pt-10 border-t border-gray-800/60 text-gray-400 text-xs">
+          <p>© {new Date().getFullYear()} {siteName}. Desarrollado por <a href="https://www.linkedin.com/in/reiner-jairo-jim%C3%A9nez-huaman-9234a9388/" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">Reiner Jimenez</a>. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

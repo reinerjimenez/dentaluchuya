@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { m } from "framer-motion";
 import { Award } from "lucide-react";
 
 // lucide-react doesn't export Instagram — using inline SVG
@@ -16,9 +13,9 @@ const TEAM = [
     name: "Cd. Fernando Uchuya",
     role: "Odontólogo Principal & Cirujano Dentista",
     specialty: "Ortodoncia · Implantes · Rehabilitación",
-    bio: "Fundador de la Clínica Dental Uchuya Premium de Mailyng en Tingo María. Con más de 10 años transformando sonrisas en la Selva Central del Perú, lidera un equipo de élite comprometido con la excelencia clínica.",
+    bio: "Fundador de la Clínica Dental Uchuya Premium en Tingo María. Con más de 10 años transformando sonrisas en la Selva Central del Perú, lidera un equipo de élite comprometido con la excelencia clínica.",
     image: "/druchuya.webp",
-    imageAlt: "Dr. Fernando Uchuya – Odontólogo y fundador de la Clínica Dental Uchuya Premium de Mailyng en Tingo María, Huánuco",
+    imageAlt: "Cd. Fernando Uchuya, fundador de Clínica Dental Uchuya Premium",
     instagram: "https://www.instagram.com/clinicadentaluchuya_premium",
     awards: ["Odontólogo Principal", "Miembro COP", "Especialista en ortodoncia"],
   },
@@ -28,7 +25,7 @@ const TEAM = [
     specialty: "Endodoncia · Odontología General",
     bio: "Especialista en ortodoncia y corrección de maloclusiones al servicio de los pacientes de Aucayacu y la región de Huánuco. Usa las técnicas más modernas para lograr sonrisas alineadas y armoniosas.",
     image: "/roberto.webp",
-    imageAlt: "Dr. Roberto Hidalgo – Especialista en ortodoncia en la sede Aucayacu de Clínica Dental Uchuya, Huánuco",
+    imageAlt: "Cd. Roberto Hidalgo, sede Aucayacu",
     instagram: "https://www.instagram.com/clinicadentaluchuya_premium",
     awards: ["Cirujano dentista", "Diplomado en endodoncia", "Miembro COP"],
   },
@@ -38,7 +35,7 @@ const TEAM = [
     specialty: "Odontopediatría · Cirugía Global · Odontología",
     bio: "El dentista infantil de referencia en Tingo María. Su enfoque lúdico y empático transforma la visita al dentista en una experiencia positiva para los niños de Tingo María desde el primer diente.",
     image: "/dcnathali.webp",
-    imageAlt: "Dr. Nathali Cardenas – Odontopediatra especialista en niños en la Clínica Dental Uchuya Premium de Mailyng, Tingo María",
+    imageAlt: "Cd. Nathali Cardenas, Clínica Dental Uchuya Premium",
     instagram: "https://www.instagram.com/clinicadentaluchuya_premium",
     awards: ["Especialidad Odontopediatría", "Formación magister en salud pública y salud global", "Cirujana Dentista"],
   },
@@ -50,23 +47,17 @@ const Team = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <m.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-gold font-bold tracking-[0.2em] uppercase text-sm"
+          <span
+            className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm"
           >
             Nuestros Especialistas
-          </m.span>
-          <m.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          </span>
+          <h2
             className="text-3xl md:text-5xl font-heading font-bold mt-4 mb-6"
           >
             Nuestros Dentistas en{" "}
-            <span className="text-gold-dark">Tingo María y Aucayacu</span>
-          </m.h2>
+            <span className="text-gold-ink">Tingo María y Aucayacu</span>
+          </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
             Especialistas certificados con vocación de servicio, comprometidos con
             ofrecerte la mejor experiencia dental en la Selva Central del Perú.
@@ -75,13 +66,9 @@ const Team = () => {
 
         {/* Team Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {TEAM.map((member, index) => (
-            <m.div
+          {TEAM.map((member) => (
+            <div
               key={member.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-              viewport={{ once: true }}
               className="group relative"
             >
               {/* Image Container */}
@@ -108,8 +95,8 @@ const Team = () => {
                   href={member.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Ver Instagram de ${member.name}`}
-                  className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-gold hover:border-gold transition opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300"
+                  aria-label={`Ver Instagram de la cl?nica`}
+                  className="absolute top-4 right-4 h-11 w-11 bg-neutral-950/70 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 hover:bg-gold hover:border-gold hover:text-neutral-950 transition-colors duration-300"
                 >
                   <InstagramIcon />
                 </a>
@@ -118,7 +105,7 @@ const Team = () => {
               {/* Text Content */}
               <div>
                 <h3 className="text-2xl font-heading font-bold mb-1">{member.name}</h3>
-                <p className="text-gold-dark font-semibold text-sm mb-4">{member.role}</p>
+                <p className="text-gold-ink font-semibold text-sm mb-4">{member.role}</p>
                 <p className="text-gray-500 leading-relaxed text-sm mb-6">{member.bio}</p>
 
                 {/* Awards */}
@@ -131,7 +118,7 @@ const Team = () => {
                   ))}
                 </div>
               </div>
-            </m.div>
+            </div>
           ))}
         </div>
       </div>

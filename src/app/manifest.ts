@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
+import { siteDescription, siteName } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Clínica Dental Uchuya Premium de Mailyng",
+    name: siteName,
     short_name: "Dental Uchuya",
-    description:
-      "Especialistas en diseño de sonrisa, implantes, ortodoncia y blanqueamiento dental en Tingo María y Aucayacu, Perú.",
+    description: siteDescription,
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
@@ -15,16 +15,16 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["health", "medical"],
     icons: [
       {
-        src: "/logouchuya.webp",
+        src: "/icon-192.png",
         sizes: "192x192",
-        type: "image/webp",
+        type: "image/png",
         purpose: "any",
       },
       {
-        src: "/logouchuya.webp",
+        src: "/icon-512.png",
         sizes: "512x512",
-        type: "image/webp",
-        purpose: "maskable",
+        type: "image/png",
+        purpose: "any",
       },
     ],
     shortcuts: [

@@ -1,6 +1,5 @@
 "use client";
 
-import { m } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { useState } from "react";
 
@@ -55,12 +54,8 @@ const TESTIMONIALS = [
   },
 ];
 
-const TestimonialCard = ({ testimonial, index }: { testimonial: typeof TESTIMONIALS[0]; index: number }) => (
-  <m.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay: index * 0.1, duration: 0.5 }}
-    viewport={{ once: true }}
+const TestimonialCard = ({ testimonial }: { testimonial: typeof TESTIMONIALS[number] }) => (
+  <div
     className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col"
   >
     {/* Quote icon */}
@@ -79,21 +74,21 @@ const TestimonialCard = ({ testimonial, index }: { testimonial: typeof TESTIMONI
     </p>
 
     {/* Tag */}
-    <span className="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold-dark text-xs font-bold uppercase tracking-wider mb-6">
+    <span className="inline-block px-3 py-1 rounded-full bg-gold/10 text-gold-ink text-xs font-bold uppercase tracking-wider mb-6">
       {testimonial.service}
     </span>
 
     {/* Author */}
     <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-      <div className="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center text-white font-bold text-sm shrink-0">
+      <div className="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center text-neutral-950 font-bold text-sm shrink-0">
         {testimonial.initial}
       </div>
       <div>
         <p className="font-bold text-gray-900">{testimonial.name}</p>
-        <p className="text-xs text-gray-400">{testimonial.location}</p>
+        <p className="text-xs text-gray-600">{testimonial.location}</p>
       </div>
     </div>
-  </m.div>
+  </div>
 );
 
 const Testimonials = () => {
@@ -104,34 +99,25 @@ const Testimonials = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <m.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-gold font-bold tracking-[0.2em] uppercase text-sm"
+          <span
+            className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm"
           >
             Testimonios Reales
-          </m.span>
-          <m.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          </span>
+          <h2
             className="text-4xl md:text-5xl font-heading font-bold mt-4 mb-6"
           >
             Pacientes que{" "}
-            <span className="text-gold-dark">Transformaron</span> su Vida
-          </m.h2>
+            <span className="text-gold-ink">Transformaron</span> su Vida
+          </h2>
           <p className="text-gray-500 text-lg">
             Más de 10,000 sonrisas felices nos respaldan. Estas son algunas de sus historias.
           </p>
         </div>
 
         {/* Stats Row */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-16"
+        <div
+          className="grid grid-cols-3 gap-2 sm:gap-8 max-w-2xl mx-auto mb-16"
         >
           {[
             { value: "10,000+", label: "Pacientes Atendidos" },
@@ -139,16 +125,16 @@ const Testimonials = () => {
             { value: "98%", label: "Índice de Satisfacción" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-3xl md:text-4xl font-heading font-bold text-gold-dark">{stat.value}</p>
-              <p className="text-xs md:text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">{stat.label}</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gold-ink">{stat.value}</p>
+              <p className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider mt-1">{stat.label}</p>
             </div>
           ))}
-        </m.div>
+        </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TESTIMONIALS.slice(0, visibleCount).map((t, i) => (
-            <TestimonialCard key={t.name} testimonial={t} index={i} />
+          {TESTIMONIALS.slice(0, visibleCount).map((t) => (
+            <TestimonialCard key={t.name} testimonial={t} />
           ))}
         </div>
 
@@ -158,7 +144,7 @@ const Testimonials = () => {
             <button
               type="button"
               onClick={() => setVisibleCount(TESTIMONIALS.length)}
-              className="bg-gold-gradient text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform premium-shadow"
+              className="bg-gold-gradient text-neutral-950 min-h-11 px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform premium-shadow"
             >
               Ver más testimonios
             </button>

@@ -1,6 +1,3 @@
-"use client";
-
-import { m } from "framer-motion";
 import { Sparkles, ShieldCheck, Heart, Zap, Star, UserCheck } from "lucide-react";
 
 const SERVICES = [
@@ -25,7 +22,7 @@ const SERVICES = [
   {
     title: "Blanqueamiento Dental",
     description:
-      "Recupera el blanco natural de tus dientes con los sistemas de blanqueamiento más avanzados del mercado, disponibles en nuestras dos sedes en Huánuco. Resultados visibles desde la primera sesión.",
+      "Recupera el blanco natural de tus dientes con los sistemas de blanqueamiento más avanzados del mercado. Consulta la disponibilidad de este tratamiento en tu sede. Resultados visibles desde la primera sesión.",
     icon: Star,
   },
   {
@@ -47,54 +44,41 @@ const Services = () => {
     <section id="servicios" className="py-12 md:py-24 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-20">
-          <m.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-gold font-bold tracking-[0.2em] uppercase text-sm"
+          <span
+            className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm"
           >
             Nuestras Especialidades
-          </m.span>
-          <m.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          </span>
+          <h2
             className="text-4xl md:text-5xl font-heading font-bold mt-4 mb-6"
           >
             Tratamientos Dentales en{" "}
-            <span className="text-gold-dark">Tingo María y Aucayacu</span>
-          </m.h2>
-          <m.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            <span className="text-gold-ink">Tingo María y Aucayacu</span>
+          </h2>
+          <p
             className="text-gray-500 text-lg leading-relaxed"
           >
             La clínica dental premium de la Selva Central de Huánuco. Ofrecemos todos los
             tratamientos odontológicos bajo un mismo techo, con tecnología de vanguardia y
             atención personalizada.
-          </m.p>
+          </p>
           <div className="w-20 h-1 bg-gold mx-auto mt-6" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((service, index) => (
-            <m.div
+          {SERVICES.map((service) => (
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="bg-white p-6 md:p-10 rounded-3xl premium-shadow hover:translate-y-[-10px] transition-transform duration-300 group border border-gray-100"
             >
               <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-gold-gradient transition-colors">
-                <service.icon className="text-gold group-hover:text-white transition-colors" size={32} />
+                <service.icon className="text-gold-ink group-hover:text-neutral-950 transition-colors" size={32} />
               </div>
               <h3 className="text-2xl font-heading font-bold mb-4">{service.title}</h3>
               <p className="text-gray-500 leading-relaxed">
                 {service.description}
               </p>
-            </m.div>
+            </div>
           ))}
         </div>
       </div>

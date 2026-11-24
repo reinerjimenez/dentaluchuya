@@ -1,108 +1,97 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { m, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 
 const GALLERY_ITEMS = [
   {
     src: "/clinicaprin.webp",
-    alt: "Instalaciones modernas de la Clínica Dental Uchuya Premium de Mailyng en Tingo María, Huánuco",
-    label: "Clínica Principal",
+    alt: "Identidad visual de la Clínica Dental Uchuya Premium",
+    label: "Clínica Dental Uchuya Premium",
     size: "col-span-2 row-span-2",
   },
   {
     src: "/atencioncal.webp",
-    alt: "Evaluación dental profesional en la Clínica Dental Uchuya Premium de Mailyng, Tingo María",
+    alt: "Evaluación de un paciente en el consultorio dental",
     label: "Atención de Calidad",
     size: "col-span-1 row-span-1",
   },
   {
     src: "/blanqueamient.webp",
-    alt: "Resultado de blanqueamiento dental en paciente atendida en Tingo María – sonrisa perfecta",
+    alt: "Paciente en un sillón dental durante un blanqueamiento",
     label: "Blanqueamiento",
     size: "col-span-1 row-span-1",
   },
 
   {
     src: "/ortopediatria.webp",
-    alt: "Tratamiento de ortopediatría en la Clínica Dental Uchuya Premium de Mailyng, Tingo María y Aucayacu",
+    alt: "Tratamiento de ortopediatría dental",
     label: "Ortopediatría",
     size: "col-span-1 row-span-1",
   },
   {
     src: "/tecnologia.webp",
-    alt: "Tecnología de vanguardia en la Clínica Dental Uchuya Premium de Mailyng, Tingo María y Aucayacu",
+    alt: "Equipo de radiografía dental durante una consulta",
     label: "Tecnología de Vanguardia",
     size: "col-span-1 row-span-1",
   },
   {
     src: "/ortodonciameta.webp",
-    alt: "Ortodoncia invisible realizado en la Clínica Dental Uchuya Premium de Mailyng – tratamiento de ortodoncia invisible en Aucayacu",
+    alt: "Odontólogo examinando la boca de una paciente",
     label: "Ortodoncia Metálica",
     size: "col-span-1 row-span-1",
   },
   {
     src: "/ortodonciainv.webp",
-    alt: "Ortodoncia invisible realizado en la Clínica Dental Uchuya Premium de Mailyng – tratamiento de ortodoncia invisible en Tingo María",
+    alt: "Equipo dental atendiendo a una paciente en el consultorio",
     label: "Ortodoncia Invisible",
     size: "col-span-1 row-span-1",
   },
   {
     src: "/clientesfelices.webp",
-    alt: "Pacientes felices con sus sonrisas en la Clínica Dental Uchuya Premium de Mailyng, Tingo María",
+    alt: "Cuatro mujeres sonrientes en una imagen de la clínica",
     label: "Pacientes felices",
     size: "col-span-2 row-span-1",
   },
 ];
 
 const Gallery = () => {
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
-  const [lightboxAlt, setLightboxAlt] = useState("");
-  const [lightboxLabel, setLightboxLabel] = useState("");
+  const [selectedImage, setSelectedImage] = useState<(typeof GALLERY_ITEMS)[number] | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   return (
     <section id="galeria" className="py-12 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        {/* Header */}
+        {/* Encabezado */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-4 md:gap-6">
           <div className="max-w-2xl">
-            <span className="text-gold font-bold tracking-[0.2em] uppercase text-sm">
+            <span className="text-gold-ink font-bold tracking-[0.2em] uppercase text-sm">
               Galería
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-bold mt-4">
-              Nuestros <span className="text-gold-dark">Resultados</span> &amp; Clínica
+              Nuestros <span className="text-gold-ink">Resultados</span> &amp; Clínica
             </h2>
           </div>
-          <p className="text-gray-500 max-w-sm text-lg leading-relaxed">
+          <p className="text-gray-600 max-w-sm text-lg leading-relaxed">
             La excelencia se refleja en cada detalle. Conoce nuestras instalaciones y resultados reales.
           </p>
         </div>
 
-        {/* Masonry Grid */}
+        {/* Imágenes de la galería */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[180px] md:auto-rows-[220px]">
-          {GALLERY_ITEMS.map((item, index) => (
-            <m.div
+          {GALLERY_ITEMS.map((item) => (
+            <button
+              type="button"
               key={item.src}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.07, duration: 0.5 }}
-              viewport={{ once: true }}
-              onClick={() => {
-                setLightboxSrc(item.src);
-                setLightboxAlt(item.alt);
-                setLightboxLabel(item.label);
+              onClick={(event) => {
+                triggerRef.current = event.currentTarget;
+                setSelectedImage(item);
+                dialogRef.current?.showModal();
               }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  setLightboxSrc(item.src);
-                  setLightboxAlt(item.alt);
-                  setLightboxLabel(item.label);
-                }
-              }}
-              role="button"
-              tabIndex={0}
+              aria-haspopup="dialog"
+              aria-controls="galeria-imagen"
               aria-label={`Ver imagen ampliada: ${item.label}`}
               className={`${item.size} relative overflow-hidden rounded-3xl group cursor-pointer`}
             >
@@ -113,26 +102,21 @@ const Gallery = () => {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes={item.size.includes("col-span-2") ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
               />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
+              {/* Etiqueta de la imagen */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
                 <ZoomIn className="text-white mb-2" size={28} />
                 <span className="text-white font-bold text-sm tracking-wider uppercase">
                   {item.label}
                 </span>
               </div>
-            </m.div>
+            </button>
           ))}
         </div>
 
-        {/* CTA under gallery */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <p className="text-gray-500 mb-6">
-            ¿Quieres ver más resultados? Visíta nuestra página de Facebook.
+        {/* Más resultados en Facebook */}
+        <div className="text-center mt-16">
+          <p className="text-gray-600 mb-6">
+            ¿Quieres ver más resultados? Visita nuestra página de Facebook.
           </p>
           <div className="flex gap-4 justify-center items-center flex-wrap">
             <a
@@ -147,54 +131,49 @@ const Gallery = () => {
               Facebook
             </a>
           </div>
-        </m.div>
+        </div>
       </div>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxSrc && (
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxSrc(null)}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
+      <dialog
+        id="galeria-imagen"
+        ref={dialogRef}
+        aria-label="Imagen ampliada de la galería"
+        onClose={() => {
+          setSelectedImage(null);
+          triggerRef.current?.focus({ preventScroll: true });
+        }}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) event.currentTarget.close();
+        }}
+        className="fixed inset-0 m-auto w-[calc(100%_-_2rem)] max-w-4xl overflow-visible bg-transparent text-white backdrop:bg-black/95 backdrop:backdrop-blur-sm"
+      >
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => dialogRef.current?.close()}
+            aria-label="Cerrar imagen ampliada"
+            className="absolute top-0 right-0 z-10 grid min-h-11 min-w-11 place-items-center rounded-full bg-black/90 text-white"
           >
-            <button
-              type="button"
-              onClick={() => setLightboxSrc(null)}
-              aria-label="Cerrar imagen ampliada"
-              className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 rounded-full p-2"
-            >
-              <X size={28} />
-            </button>
-            <m.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="flex flex-col items-center w-full max-w-4xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Image container: tall on mobile, aspect-video on desktop */}
-              <div className="relative w-full h-[75svh] md:h-auto md:aspect-video rounded-2xl overflow-hidden">
+            <X size={28} />
+          </button>
+          {selectedImage && (
+            <figure>
+              <div className="relative h-[75svh] w-full overflow-hidden rounded-2xl">
                 <Image
-                  src={lightboxSrc}
-                  alt={lightboxAlt}
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
                   fill
                   className="object-contain"
-                  sizes="100vw"
+                  sizes="(min-width: 64rem) 56rem, 100vw"
                 />
               </div>
-              {/* Label shown on mobile; desktop already shows it on hover */}
-              {lightboxLabel && (
-                <span className="mt-4 text-white font-bold text-base tracking-wider uppercase md:hidden">
-                  {lightboxLabel}
-                </span>
-              )}
-            </m.div>
-          </m.div>
-        )}
-      </AnimatePresence>
+              <figcaption className="mt-4 text-center font-bold tracking-wider">
+                {selectedImage.label}
+              </figcaption>
+            </figure>
+          )}
+        </div>
+      </dialog>
     </section>
   );
 };
