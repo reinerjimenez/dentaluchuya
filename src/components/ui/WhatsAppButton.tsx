@@ -75,9 +75,9 @@ const WhatsAppButton = () => {
         <div>
           <div className="flex items-start justify-between gap-3 bg-gold-gradient px-6 py-5 text-white">
             <div>
-              <p className="mb-1 text-xs font-semibold">En línea ahora</p>
-              <h2 id="chat-whatsapp-titulo" className="font-heading text-xl font-bold">Agendar por WhatsApp</h2>
-              <p className="mt-0.5 text-sm text-white/75">Respuesta inmediata · Sin compromiso</p>
+              <p className="mb-1 text-xs font-semibold text-neutral-950">En línea ahora</p>
+              <h2 id="chat-whatsapp-titulo" className="font-heading text-xl font-bold text-neutral-950">Agendar por WhatsApp</h2>
+              <p className="mt-0.5 text-sm text-neutral-950">Respuesta inmediata · Sin compromiso</p>
             </div>
             <button
               type="button"
@@ -146,7 +146,7 @@ const WhatsAppButton = () => {
                     className="flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[#25D366] p-4 font-bold text-white shadow-lg transition-colors hover:bg-[#20ba5a]"
                   >
                     <MessageCircle size={20} />
-                    Abrir WhatsApp
+                    <span className="text-neutral-950">Abrir WhatsApp</span>
                   </a>
                 ) : (
                   <button
@@ -177,8 +177,8 @@ const WhatsAppButton = () => {
                       </span>
                       <span>
                         <span className="block font-bold text-gray-900">{location.name}</span>
-                        <span className="block text-xs text-gray-400">{location.streetAddress}</span>
-                        <span className="block text-xs text-gray-400">{location.hours}</span>
+                        <span className="block text-xs text-gray-600">{location.streetAddress}</span>
+                        <span className="block text-xs text-gray-600">{location.hours}</span>
                       </span>
                     </div>
                     <ChevronRight aria-hidden="true" className="shrink-0 text-gray-300 group-hover:text-gold" size={20} />

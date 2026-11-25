@@ -3,17 +3,19 @@ export const cities = {
     name: "Tingo María",
     path: "/sedes/tingo-maria",
     description:
-      "Direcciones, horarios y teléfonos de Clínica Dental Uchuya Premium en Tingo María, Huánuco. Agenda en Av. Alameda Perú o Jr. José Prato.",
+      "Clínica odontológica en Tingo María. Consulta horarios y agenda una cita dental en Alameda Perú o José Prato. Ortodoncia, diseño de sonrisa y odontopediatría.",
     introduction:
-      "Elige entre los consultorios de Av. Alameda Perú y Jr. José Prato. Consulta la ubicación, el teléfono y el horario de cada uno para agendar tu cita dental.",
+      "Si buscas un odontólogo en Tingo María, puedes elegir entre nuestros consultorios de Av. Alameda Perú y Jr. José Prato. Consulta sus horarios y agenda por teléfono o WhatsApp.",
+    contactHeading: "Dentistas en Tingo María: horarios y citas",
   },
   aucayacu: {
     name: "Aucayacu",
     path: "/sedes/aucayacu",
     description:
-      "Encuentra Clínica Dental Uchuya Premium en Av. Lima 455, Aucayacu, Huánuco. Consulta horarios, cómo llegar y cómo agendar una cita dental.",
+      "Clínica dental en Aucayacu, Av. Lima 455. Consulta por ortodoncia y rehabilitación oral, revisa los horarios y agenda tu cita por WhatsApp.",
     introduction:
       "Nuestro consultorio en Aucayacu está en Av. Lima 455. Consulta cómo llegar y comunícate por teléfono o WhatsApp para agendar tu cita dental.",
+    contactHeading: "Dirección y citas en Aucayacu",
   },
 } as const;
 

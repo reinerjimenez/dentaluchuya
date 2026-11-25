@@ -19,7 +19,7 @@ const GALLERY_ITEMS = [
   },
   {
     src: "/blanqueamient.webp",
-    alt: "Paciente en un sillón dental durante un blanqueamiento",
+    alt: "Paciente en un sillón durante un blanqueamiento dental",
     label: "Blanqueamiento",
     size: "col-span-1 row-span-1",
   },

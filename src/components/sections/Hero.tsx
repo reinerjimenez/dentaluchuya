@@ -33,7 +33,7 @@ export default function Hero() {
               href="#sedes"
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-gold-gradient px-8 py-4 text-lg font-bold text-white transition-transform hover:scale-105 premium-shadow"
             >
-              Agenda tu cita <ChevronRight size={20} aria-hidden="true" />
+              <span className="text-neutral-950">Agenda tu cita</span> <ChevronRight size={20} aria-hidden="true" />
             </Link>
             <Link
               href="#galeria"
@@ -54,7 +54,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-7 flex w-fit max-w-full items-center gap-4 rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-lg text-white lg:ml-auto lg:mt-8">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-gradient text-xl font-bold text-white">10+</span>
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-gradient text-xl font-bold text-neutral-950">10+</span>
           <div>
             <p className="text-sm font-bold">Años de excelencia</p>
             <p className="text-xs text-white/60">10,000+ pacientes atendidos</p>

@@ -112,7 +112,7 @@ const Navbar = () => {
             </a>
             <Link
               href={bookingLink}
-              className="inline-flex min-h-11 items-center bg-gold-gradient text-white px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform premium-shadow"
+              className="inline-flex min-h-11 items-center bg-gold-gradient text-neutral-950 px-7 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform premium-shadow"
             >
               Agendar cita
             </Link>
@@ -184,7 +184,7 @@ const Navbar = () => {
             <Link
               href={bookingLink}
               onClick={closeMenu}
-              className="block w-full bg-gold-gradient text-white px-8 py-4 rounded-full font-bold text-lg text-center"
+              className="block w-full bg-gold-gradient text-neutral-950 px-8 py-4 rounded-full font-bold text-lg text-center"
             >
               Agendar cita
             </Link>

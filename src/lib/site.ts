@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const siteName = "Clínica Dental Uchuya Premium";
 export const siteDescription =
-  "Atención dental en Tingo María y Aucayacu. Consulta nuestras ubicaciones y agenda una evaluación de ortodoncia, implantes o diseño de sonrisa.";
+  "Clínica dental en Tingo María y Aucayacu. Conoce nuestros tratamientos de ortodoncia, implantes dentales y diseño de sonrisa. Consulta horarios y agenda tu cita.";
 export const productionUrl = "https://dentaluchuya.com";
 export const productionHost = "dentaluchuya.com";
 export const formerHost = "dentaluchuya.vercel.app";

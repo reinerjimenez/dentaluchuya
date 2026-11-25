@@ -45,7 +45,7 @@ export default function Locations() {
               aria-controls="consultorios"
               onClick={() => setActiveLocation(id)}
               className={`min-h-11 rounded-xl px-2 text-sm font-bold transition-colors ${
-                activeLocation === id ? "bg-gold text-white shadow-md" : "text-gray-600 hover:bg-gray-50 hover:text-black"
+                activeLocation === id ? "bg-gold text-neutral-950 shadow-md" : "text-gray-600 hover:bg-gray-50 hover:text-black"
               }`}
             >
               {shortName}

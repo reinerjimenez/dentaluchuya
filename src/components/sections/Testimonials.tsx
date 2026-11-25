@@ -80,12 +80,12 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof TESTIMONIALS[num
 
     {/* Author */}
     <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-      <div className="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center text-white font-bold text-sm shrink-0">
+      <div className="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center text-neutral-950 font-bold text-sm shrink-0">
         {testimonial.initial}
       </div>
       <div>
         <p className="font-bold text-gray-900">{testimonial.name}</p>
-        <p className="text-xs text-gray-400">{testimonial.location}</p>
+        <p className="text-xs text-gray-600">{testimonial.location}</p>
       </div>
     </div>
   </div>
@@ -126,7 +126,7 @@ const Testimonials = () => {
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-gold-dark">{stat.value}</p>
-              <p className="text-xs md:text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">{stat.label}</p>
+              <p className="text-xs md:text-sm text-gray-600 font-medium uppercase tracking-wider mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ const Testimonials = () => {
             <button
               type="button"
               onClick={() => setVisibleCount(TESTIMONIALS.length)}
-              className="bg-gold-gradient text-white min-h-11 px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform premium-shadow"
+              className="bg-gold-gradient text-neutral-950 min-h-11 px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform premium-shadow"
             >
               Ver más testimonios
             </button>

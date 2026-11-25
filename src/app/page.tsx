@@ -17,7 +17,7 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials"))
 const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 
 export const metadata = pageMetadata({
-  title: `${siteName} | Tingo María y Aucayacu`,
+  title: `${siteName} en Tingo María y Aucayacu`,
   description: siteDescription,
   path: "/",
 });
@@ -57,7 +57,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="font-bold text-sm md:text-base text-gray-900">{text}</p>
-                  <p className="text-xs text-gray-400 leading-snug">{sub}</p>
+                  <p className="text-xs text-gray-600 leading-snug">{sub}</p>
                 </div>
               </div>
             ))}
@@ -81,7 +81,7 @@ export default function Home() {
               <div className="relative w-full aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl max-w-md mx-auto lg:max-w-none">
                 <Image
                   src="/druchuya.webp"
-                  alt="Dr. Fernando Uchuya, odontólogo de Clínica Dental Uchuya Premium"
+                  alt="Dr. Fernando Uchuya, odontólogo y fundador de la clínica en Tingo María"
                   fill
                   className="object-cover"
                   sizes="(max-width: 480px) calc(100vw - 3rem), (max-width: 1023px) 448px, 50vw"
@@ -95,11 +95,11 @@ export default function Home() {
                   &ldquo;Mi compromiso es devolverte la confianza de sonreír&rdquo;
                 </p>
                 <p className="text-gray-900 font-bold text-xs">Dr. Fernando Uchuya</p>
-                <p className="text-gray-400 text-[10px]">Odontólogo Principal</p>
+                <p className="text-gray-600 text-[10px]">Odontólogo Principal</p>
               </div>
 
               {/* Experience badge */}
-              <div className="absolute top-4 left-3 md:-top-6 md:-left-4 lg:-left-8 bg-gold-gradient text-white p-3 md:p-5 rounded-2xl md:rounded-3xl shadow-xl">
+              <div className="absolute top-4 left-3 md:-top-6 md:-left-4 lg:-left-8 bg-gold-gradient text-neutral-950 p-3 md:p-5 rounded-2xl md:rounded-3xl shadow-xl">
                 <p className="text-2xl md:text-3xl font-bold leading-none">10+</p>
                 <p className="text-xs font-semibold opacity-80">Años de<br />experiencia</p>
               </div>
@@ -153,7 +153,7 @@ export default function Home() {
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="text-2xl md:text-3xl font-bold text-gold mb-1">{stat.value}</p>
-                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-600">
                       {stat.label}
                     </p>
                   </div>
@@ -162,7 +162,7 @@ export default function Home() {
 
               <Link
                 href="#sedes"
-                className="flex md:inline-flex min-h-11 items-center justify-center gap-2 bg-gold-gradient text-white px-6 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform premium-shadow"
+                className="flex md:inline-flex min-h-11 items-center justify-center gap-2 bg-gold-gradient text-neutral-950 px-6 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform premium-shadow"
               >
                 Agenda tu evaluación hoy
               </Link>

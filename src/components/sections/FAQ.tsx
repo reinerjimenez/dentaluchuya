@@ -89,7 +89,7 @@ const FAQ = () => {
                   className={cn(
                     "min-h-11 px-5 py-2 rounded-full text-sm font-bold transition",
                     activeCategory === cat
-                      ? "bg-gold-gradient text-white premium-shadow"
+                      ? "bg-gold-gradient text-neutral-950 premium-shadow"
                       : "bg-white border border-gray-200 text-gray-600 hover:border-gold"
                   )}
                 >
@@ -101,10 +101,10 @@ const FAQ = () => {
             {/* Contacto */}
             <div className="bg-gold-gradient p-6 sm:p-8 rounded-3xl text-white premium-shadow">
               <HelpCircle size={48} className="mb-6 opacity-50" />
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="text-2xl font-bold mb-4 text-neutral-950">
                 ¿No encuentras lo que buscas?
               </h3>
-              <p className="mb-6 opacity-90 leading-relaxed">
+              <p className="mb-6 leading-relaxed text-neutral-950">
                 Escríbenos directamente y uno de nuestros especialistas te
                 responderá en minutos.
               </p>

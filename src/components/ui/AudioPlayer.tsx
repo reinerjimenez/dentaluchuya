@@ -61,7 +61,7 @@ const AudioPlayer = () => {
           </div>
 
           <div className="flex w-full flex-1 items-center gap-3">
-            <span aria-hidden="true" className="w-9 shrink-0 text-right font-mono text-xs tabular-nums text-gray-400">
+            <span aria-hidden="true" className="w-9 shrink-0 text-right font-mono text-xs tabular-nums text-gray-600">
               {formatTime(elapsed)}
             </span>
             <input
@@ -82,7 +82,7 @@ const AudioPlayer = () => {
               }}
               className="min-h-11 min-w-0 flex-1 cursor-pointer accent-gold disabled:cursor-default"
             />
-            <span aria-hidden="true" className="w-9 shrink-0 font-mono text-xs tabular-nums text-gray-400">
+            <span aria-hidden="true" className="w-9 shrink-0 font-mono text-xs tabular-nums text-gray-600">
               {formatTime(duration)}
             </span>
           </div>
@@ -93,7 +93,7 @@ const AudioPlayer = () => {
             aria-label={isPlaying ? "Pausar audio" : "Escuchar presentación de la clínica"}
             className="premium-shadow flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gold-gradient px-5 py-2.5 text-sm font-bold text-white transition-transform hover:scale-105 active:scale-95"
           >
-            {isPlaying ? <><Pause size={16} /> Pausar</> : <><Play size={16} /> Escuchar</>}
+            {isPlaying ? <><Pause size={16} /> <span className="text-neutral-950">Pausar</span></> : <><Play size={16} /> <span className="text-neutral-950">Escuchar</span></>}
           </button>
         </div>
 
