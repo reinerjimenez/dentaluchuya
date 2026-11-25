@@ -4,7 +4,7 @@ import Locations from "@/components/sections/Locations";
 import AudioPlayer from "@/components/ui/AudioPlayer";
 import JsonLd from "@/components/ui/JsonLd";
 import { locations } from "@/lib/locations";
-import { homeSchema, pageMetadata, siteDescription, siteName } from "@/lib/site";
+import { absoluteUrl, homeSchema, organizationId, pageMetadata, siteDescription, siteName } from "@/lib/site";
 import Image from "next/image";
 import Link from "next/link";
 import { Shield, Star, Users, Award, CheckCircle } from "lucide-react";
@@ -29,10 +29,34 @@ const TRUST_BADGES = [
   { icon: Award, text: "Tecnología TOP", sub: "Equipos de última generación" },
 ];
 
+const schema = {
+  ...homeSchema,
+  "@graph": [
+    ...homeSchema["@graph"],
+    ...locations.map((location) => ({
+      "@type": "Dentist",
+      "@id": absoluteUrl(`/#${location.id}`),
+      name: `${siteName} – ${location.name}`,
+      url: absoluteUrl("/#sedes"),
+      parentOrganization: { "@id": organizationId },
+      telephone: location.telephone,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: location.streetAddress,
+        addressLocality: location.city,
+        addressRegion: "Huánuco",
+        postalCode: location.postalCode,
+        addressCountry: "PE",
+      },
+      openingHoursSpecification: location.openingHoursSpecification,
+    })),
+  ],
+};
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <JsonLd data={homeSchema} />
+      <JsonLd data={schema} />
       {/* ── 1. HERO ─────────────────────────────────── */}
       <Hero />
 

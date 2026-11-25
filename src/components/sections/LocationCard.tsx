@@ -2,7 +2,13 @@
 import { type ClinicLocation, whatsappUrl } from "@/lib/locations";
 import LocationMap from "@/components/sections/LocationMap";
 
-export default function LocationCard({ location }: { location: ClinicLocation }) {
+export default function LocationCard({
+  location,
+  mapDisplay = "expandable",
+}: {
+  location: ClinicLocation;
+  mapDisplay?: "expandable" | "inline" | "hidden";
+}) {
   const { id, name, address, badge, phone, telephone, hours } = location;
   const directions = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
   const appointment = whatsappUrl(location, `Hola, deseo agendar una cita en la sede ${name}.`);
@@ -50,7 +56,9 @@ export default function LocationCard({ location }: { location: ClinicLocation })
           </div>
         </dl>
 
-        <LocationMap id={id} name={name} address={address} />
+        {mapDisplay !== "hidden" && (
+          <LocationMap id={id} name={name} address={address} inline={mapDisplay === "inline"} />
+        )}
 
         <div className="grid grid-cols-2 gap-2">
           <a

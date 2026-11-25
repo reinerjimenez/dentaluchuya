@@ -1,21 +1,9 @@
 export const cities = {
   "tingo-maria": {
     name: "Tingo María",
-    path: "/sedes/tingo-maria",
-    description:
-      "Clínica odontológica en Tingo María. Consulta horarios y agenda una cita dental en Alameda Perú o José Prato. Ortodoncia, diseño de sonrisa y odontopediatría.",
-    introduction:
-      "Si buscas un odontólogo en Tingo María, puedes elegir entre nuestros consultorios de Av. Alameda Perú y Jr. José Prato. Consulta sus horarios y agenda por teléfono o WhatsApp.",
-    contactHeading: "Dentistas en Tingo María: horarios y citas",
   },
   aucayacu: {
     name: "Aucayacu",
-    path: "/sedes/aucayacu",
-    description:
-      "Clínica dental en Aucayacu, Av. Lima 455. Consulta por ortodoncia y rehabilitación oral, revisa los horarios y agenda tu cita por WhatsApp.",
-    introduction:
-      "Nuestro consultorio en Aucayacu está en Av. Lima 455. Consulta cómo llegar y comunícate por teléfono o WhatsApp para agendar tu cita dental.",
-    contactHeading: "Dirección y citas en Aucayacu",
   },
 } as const;
 
@@ -46,7 +34,6 @@ function defineLocation({ localNumber, ...details }: LocationDetails) {
   return {
     ...details,
     city: city.name,
-    path: `${city.path}#${details.id}`,
     address: `${details.streetAddress}, ${city.name} ${details.postalCode}, Perú`,
     phone: `+51 ${localNumber}`,
     telephone: `+${whatsapp}`,

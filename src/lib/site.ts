@@ -14,7 +14,7 @@ export const indexingEnabled =
   process.env.INDEXING_ENABLED === "true";
 
 export const siteUrl = indexingEnabled ? productionUrl : `https://${formerHost}`;
-export const PUBLIC_PAGE_PATHS = ["/", "/sedes/tingo-maria", "/sedes/aucayacu"] as const;
+export const PUBLIC_PAGE_PATHS = ["/"] as const;
 
 export function absoluteUrl(path: string) {
   return new URL(path, siteUrl).href;
@@ -56,12 +56,11 @@ export function pageMetadata({
   path: (typeof PUBLIC_PAGE_PATHS)[number];
 }): Metadata {
   const url = absoluteUrl(path);
-  const fullTitle = path === "/" ? title : `${title} | ${siteName}`;
   const socialImage = absoluteUrl("/clinica-social.jpg");
   const socialImageAlt = "Dr. Fernando Uchuya";
 
   return {
-    title: fullTitle,
+    title,
     description,
     alternates: { canonical: url },
     openGraph: {
@@ -69,7 +68,7 @@ export function pageMetadata({
       locale: "es_PE",
       url,
       siteName,
-      title: fullTitle,
+      title,
       description,
       images: [
         {
@@ -83,7 +82,7 @@ export function pageMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: fullTitle,
+      title,
       description,
       images: [{ url: socialImage, alt: socialImageAlt }],
     },

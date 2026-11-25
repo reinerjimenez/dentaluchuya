@@ -140,11 +140,7 @@ const Footer = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {locations.map((sede) => (
                 <div key={sede.id}>
-                  <h3 className="font-bold text-gold-dark text-sm">
-                    <Link href={sede.path} className="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-gold-light">
-                      {sede.name}
-                    </Link>
-                  </h3>
+                  <h3 className="font-bold text-gold-dark text-sm">{sede.name}</h3>
                   <div className="space-y-2 text-sm text-gray-400">
                     <p className="flex gap-2">
                       <MapPin size={14} className="text-gold shrink-0 mt-0.5" />
