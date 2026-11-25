@@ -40,7 +40,7 @@ const WhatsAppButton = () => {
   return (
     <>
       <div className="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6">
-        <div aria-hidden="true" className="hidden whitespace-nowrap rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-lg sm:block">
+        <div aria-hidden="true" className="whitespace-nowrap rounded-full border border-gray-100 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-lg">
           💬 ¡Chatea con nosotros!
         </div>
         <button

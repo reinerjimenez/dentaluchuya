@@ -64,8 +64,8 @@ const FAQ = () => {
   return (
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Filtro y contacto */}
+        <div className="grid grid-cols-1 gap-8 items-start lg:grid-cols-2 lg:gap-16">
+          {/* Encabezado y filtro */}
           <div className="lg:sticky lg:top-28">
             <span className="text-gold font-bold tracking-[0.2em] uppercase text-sm">
               Preguntas Frecuentes
@@ -79,7 +79,7 @@ const FAQ = () => {
             </p>
 
             {/* Filtro de categorías */}
-            <div className="flex flex-wrap gap-2 mb-10">
+            <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
                 <button
                   type="button"
@@ -96,27 +96,6 @@ const FAQ = () => {
                   {cat}
                 </button>
               ))}
-            </div>
-
-            {/* Contacto */}
-            <div className="bg-gold-gradient p-6 sm:p-8 rounded-3xl text-white premium-shadow">
-              <HelpCircle size={48} className="mb-6 opacity-50" />
-              <h3 className="text-2xl font-bold mb-4 text-neutral-950">
-                ¿No encuentras lo que buscas?
-              </h3>
-              <p className="mb-6 leading-relaxed text-neutral-950">
-                Escríbenos directamente y uno de nuestros especialistas te
-                responderá en minutos.
-              </p>
-              <a
-                href={whatsappUrl(contactLocation, "Hola, tengo una pregunta sobre los tratamientos")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 bg-white text-gold font-bold px-5 sm:px-8 py-3 rounded-full hover:scale-105 transition-transform"
-              >
-                <MessageCircle size={18} />
-                Consultar por WhatsApp
-              </a>
             </div>
           </div>
 
@@ -143,6 +122,27 @@ const FAQ = () => {
                 </p>
               </details>
             ))}
+
+            {/* Contacto */}
+            <div className="mt-8 bg-gold-gradient p-6 sm:p-8 rounded-3xl text-white premium-shadow">
+              <HelpCircle size={48} className="mb-6 opacity-50" />
+              <h3 className="text-2xl font-bold mb-4 text-neutral-950">
+                ¿No encuentras lo que buscas?
+              </h3>
+              <p className="mb-6 leading-relaxed text-neutral-950">
+                Escríbenos directamente y uno de nuestros especialistas te
+                responderá en minutos.
+              </p>
+              <a
+                href={whatsappUrl(contactLocation, "Hola, tengo una pregunta sobre los tratamientos")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 bg-white text-gold font-bold px-5 sm:px-8 py-3 rounded-full hover:scale-105 transition-transform"
+              >
+                <MessageCircle size={18} />
+                Consultar por WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
